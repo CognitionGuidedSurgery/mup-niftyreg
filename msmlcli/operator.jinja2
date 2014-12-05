@@ -1,0 +1,46 @@
+{% macro argument(seq) -%}
+{% for i in seq %}
+        <arg name="{{ i.name }}" {% if i.logical %}logical="{{ i.logical }}"{% endif %} physical="{{ i.physical }}" {% if i.default %}default="{{i.default}}"{% endif %} {% if i.target %}target="{{ i.target }}"{% endif %} >
+            <meta key="doc">
+                {{ i.doc | indent(20) }}
+            </meta>
+        </arg>
+{% endfor %}
+{%- endmacro %}
+<msml:operator xmlns:msml="http://sfb125.de/msml"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xsi:schemaLocation="http://sfb125.de/msml"
+               name="{{ name }}">
+
+    <meta>
+        <entry key="doc">
+            {{ title }}
+            ===========
+
+            {{ documentation|indent(12) }}
+
+            {{ description|indent(12) }}
+
+            :License: {{ license }}
+            :Contributor: {{ contributor }}
+        </entry>
+        <entry key="category" value="{{ category }}" />
+    </meta>
+
+
+    <runtime>
+        <sh template="{{ executable }} {{ params }}"/>
+    </runtime>
+
+    <input>
+    {{ argument(inputs) }}
+    </input>
+
+    <output>
+    {{ argument(outputs) }}
+    </output>
+
+    <parameters>
+    {{ argument(parameters) }}
+    </parameters>
+</msml:operator>

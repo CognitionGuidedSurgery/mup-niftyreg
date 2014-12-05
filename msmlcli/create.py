@@ -1,17 +1,38 @@
-__author__ = 'weigl'
+from __future__ import print_function
+# Copyright (C) 2014 Alexander Weigl
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program. If not, see <http://www.gnu.org/licenses/>.
+
+"""Transfers CLI executables into an MSML-usable form.
+
+
+"""
+
+__author__ = 'Alexander Weigl <uiduw@student.kit.edu>'
+__date__ = "2014-12-05"
+__version__ = "0.2"
+
 
 import argparse
 import subprocess
 import os
 import os.path
-
+import sys
 import jinja2
 from path import path
 
 import binding
-
-
-
 
 # region parameter conversion
 class MsmlArgument(object):
@@ -30,11 +51,12 @@ TYPE_TABLE = {
     'double': 'double',
     'd': 'double',
     'string_vector': 'vector.string',
-
+    'integer' : 'int',
+    'p': 'vector.int', # point (2d/3d)s
 }
 
 
-def default_args(obj):
+def default_arg(obj):
     arg = MsmlArgument()
     arg.name = obj.name
 
@@ -46,6 +68,11 @@ def default_args(obj):
 
     if typ in TYPE_TABLE:
         arg.physical = TYPE_TABLE[typ]
+    elif typ is None:
+        pass
+    else:
+        print("%s is not defined in the TYPE_TABLE" % typ, file=sys.stderr)
+        arg.physical = typ
 
 
     arg.logical = ""
@@ -60,79 +87,79 @@ def default_args(obj):
 
 
 def _integer_enumeration(integer_enumeration):
-    return default_args(integer_enumeration)
+    return default_arg(integer_enumeration)
 
 
 def _integer_vector(integer_vector):
-    return default_args(integer_vector)
+    return default_arg(integer_vector)
 
 
 def _directory(directory):
-    return default_args(directory)
+    return default_arg(directory)
 
 
 def _double(double):
-    return default_args(double)
+    return default_arg(double)
 
 
 def _double_enumeration(enum):
-    return default_args(enum)
+    return default_arg(enum)
 
 
 def _double_vector(vec):
-    return default_args(vec)
+    return default_arg(vec)
 
 
 def _file(fil):
-    return default_args(fil)
+    return default_arg(fil)
 
 
 def _float(floot):
-    return default_args(floot)
+    return default_arg(floot)
 
 
 def _float_enumeration(enum):
-    return default_args(enum)
+    return default_arg(enum)
 
 
 def _float_vector(vec):
-    return default_args(vec)
+    return default_arg(vec)
 
 
 def _geometry(geometry):
-    return default_args(geometry)
+    return default_arg(geometry)
 
 
 def _image(image):
-    return default_args(image)
+    return default_arg(image)
 
 
 def _point(point):
-    return default_args(point)
+    return default_arg(point)
 
 
 def _region(region):
-    return default_args(region)
+    return default_arg(region)
 
 
 def _string(string):
-    return default_args(string)
+    return default_arg(string)
 
 
 def _string_enumeration(enum):
-    return default_args(enum)
+    return default_arg(enum)
 
 
 def _string_vector(vec):
-    return default_args(vec)
+    return default_arg(vec)
 
 
 def _boolean(boolean):
-    return default_args(boolean)
+    return default_arg(boolean)
 
 
 def _integer(integer):
-    return default_args(integer)
+    return default_arg(integer)
 
 
 # endregion
@@ -256,18 +283,27 @@ class CreateCLI(object):
                 self.parameters.append(arg)
 
 
-##
+#region command line
 def create_argument_parser():
     p = argparse.ArgumentParser()
-    p.add_argument("executable", metavar="EXECUTABLE", nargs='+', help="CLI executable")
-    p.add_argument("-o", "--output-dir", metavar="FILE", action="store", dest="output_dir", help="output folder",
+    p.add_argument("executable", metavar="EXECUTABLE", nargs='*', help="CLI executable")
+    p.add_argument("-o", "--output-dir", metavar="FOLDER", action="store", dest="output_dir", help="output folder",
                    default="alphabet/")
     return p
 
 
 def main():
     args = create_argument_parser().parse_args()
-    for executable in args.executable:
+
+    if not args.executable:
+        binfolder = path("./bin/")
+        print("ALL MODE ON, take every executable in %s" % binfolder.abspath())
+        executables = filter(lambda fpath: os.access(fpath, os.X_OK),
+                             binfolder.walkfiles("*",errors="ignore"))
+    else:
+        executables = args.executable
+
+    for executable in executables:
         create = CreateCLI(executable)
         msml_xml = create.do()
         fil = "%s/%s.msml.xml" % (args.output_dir, create.name)
@@ -275,6 +311,4 @@ def main():
         with open(fil, 'w') as fp:
             fp.write(msml_xml)
 
-
-if __name__ == "__main__":
-    main()
+#endregion
