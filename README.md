@@ -13,11 +13,11 @@ This repository is a kick-start template for getting CLI (CommandLineInterface) 
 
 1. Clone the latest version of this repository:
 
-    $ git clone --depth 0 https://github.com/CognitionGuidedSurgery/mur-cli.git
+        $ git clone --depth 0 https://github.com/CognitionGuidedSurgery/mur-cli.git
    
 2. Install dependencies:
 
-    $ pip install --user path.py pyxb jinja2
+        $ pip install --user path.py pyxb jinja2
     
 
 3. Exclude `alphabet/`, `bin`, `py` from `.gitignore` file.
@@ -26,11 +26,11 @@ This repository is a kick-start template for getting CLI (CommandLineInterface) 
 
 5. Call `make.py`
 
-    $ ./make.py
+        $ ./make.py
 
 Optional for sharing your MUR:
 
 5. Set a new origin with your `<user>` and `<repo>`:
 
-    $ git remote set-url origin https://github.com/<user>/<repo>.git
-    $ git commit && git push
+        $ git remote set-url origin https://github.com/<user>/<repo>.git
+        $ git commit && git push
