@@ -1,0 +1,10 @@
+name: mup-cli
+maintainer: "Alexander Weigl <alexander.weigl@student.kit.edu>"
+version: "2015.01.03"
+git: "https://github.com/CognitionGuidedSurgery/mup-cli.git"
+alphabet-directories:
+  - alphabet/
+binary-search-path:
+  - bin/
+python-path:
+  - py/
