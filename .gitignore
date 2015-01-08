@@ -1,6 +1,4 @@
-alphabet/*
-bin/*
-py/*
+
 *.pyc
 *.pyo
 .idea/
