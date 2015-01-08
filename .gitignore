@@ -5,4 +5,5 @@ py/*
 *.pyo
 .idea/
 
-
+build/
+install/
