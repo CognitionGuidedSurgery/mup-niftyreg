@@ -1,3 +1,6 @@
 [submodule "niftyreg"]
 	path = niftyreg
 	url = git://git.code.sf.net/p/niftyreg/git
+[submodule "cli2msml"]
+	path = cli2msml
+	url = https://github.com/CognitionGuidedSurgery/cli2msml.git
