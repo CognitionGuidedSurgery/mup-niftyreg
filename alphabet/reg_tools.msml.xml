@@ -1,0 +1,188 @@
+
+<msml:operator xmlns:msml="http://sfb125.de/msml"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xsi:schemaLocation="http://sfb125.de/msml"
+               name="reg_tools">
+
+    <annotation>
+        <entry key="doc">
+            RegTools (NiftyReg)
+            ===========
+
+            
+
+            NiftyReg module under construction
+
+            :License: BSD
+            :Contributor: Marc Modat (UCL)
+        </entry>
+        <entry key="category" value="Registration.NiftyReg" />
+    </annotation>
+
+
+    <runtime>
+        <sh template="reg_tools --float={convertToFloat} --down={downSample} --bin={binarize} --iso={isotropic} --add={addConst} --sub={subConst} --mul={mulConst} --div={divConst} --smo={smooth} --smoG={smooth} --thr={threshold}   --in={inputImageName} --rms={rmsImages} --nan={maskImage} --add={addImage} --sub={subtractImage} --mul={multiplyImage} --div={divideImage} "/>
+    </runtime>
+
+    <input>
+    
+        <arg name="inputImageName"  physical="Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG" default="required"  >
+            <meta key="doc">
+                Input image
+                    
+                    Input image filename
+            </meta>
+        </arg>
+
+        <arg name="rmsImages"  physical="Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG"   >
+            <meta key="doc">
+                Compute RMS 
+                    
+                    Compute the mean rms between this image and the input image
+            </meta>
+        </arg>
+
+        <arg name="maskImage"  physical="Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG"   >
+            <meta key="doc">
+                Mask Image
+                    
+                    This image is used to mask the input image. Voxels outside of the mask are set to nan
+            </meta>
+        </arg>
+
+        <arg name="addImage"  physical="Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG"   >
+            <meta key="doc">
+                Add Images
+                    
+                    This image is added to the input image
+            </meta>
+        </arg>
+
+        <arg name="subtractImage"  physical="Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG"   >
+            <meta key="doc">
+                Subtract Images
+                    
+                    This image is subtracted from the input image
+            </meta>
+        </arg>
+
+        <arg name="multiplyImage"  physical="Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG"   >
+            <meta key="doc">
+                Multiply Images
+                    
+                    This image is multiplied with input image
+            </meta>
+        </arg>
+
+        <arg name="divideImage"  physical="Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG"   >
+            <meta key="doc">
+                Divide Input Image
+                    
+                    The input image is divided by this image
+            </meta>
+        </arg>
+
+    </input>
+
+    <output>
+    
+    </output>
+
+    <parameters>
+    
+        <arg name="convertToFloat"  physical="bool"   >
+            <meta key="doc">
+                Convert to float
+                    
+                    The input image is converted to float
+            </meta>
+        </arg>
+
+        <arg name="downSample"  physical="bool"   >
+            <meta key="doc">
+                Downsample
+                    
+                    The input image is downsampled 2 times
+            </meta>
+        </arg>
+
+        <arg name="binarize"  physical="bool"   >
+            <meta key="doc">
+                Binarize
+                    
+                    Binarise the input image (val!=0?val=1:val=0) 
+            </meta>
+        </arg>
+
+        <arg name="isotropic"  physical="bool"   >
+            <meta key="doc">
+                Make Isotropic
+                    
+                    The resulting image is made isotropic
+            </meta>
+        </arg>
+
+        <arg name="addConst"  physical="float" default="none"  >
+            <meta key="doc">
+                Add
+                    
+                    Add the constant value to the input image
+                    :Possible Values: []
+            </meta>
+        </arg>
+
+        <arg name="subConst"  physical="float" default="none"  >
+            <meta key="doc">
+                Subtract
+                    
+                    Subtract the constant value from the input image
+                    :Possible Values: []
+            </meta>
+        </arg>
+
+        <arg name="mulConst"  physical="float" default="none"  >
+            <meta key="doc">
+                Multiply
+                    
+                    Multiply the input image with the constant value
+                    :Possible Values: []
+            </meta>
+        </arg>
+
+        <arg name="divConst"  physical="float" default="none"  >
+            <meta key="doc">
+                Divide
+                    
+                    Divide the input image with the constant value
+                    :Possible Values: []
+            </meta>
+        </arg>
+
+        <arg name="smooth"  physical="float" default="none"  >
+            <meta key="doc">
+                Smooth (B-Spline)
+                    
+                    The input image is smoothed using a cubic b-spline kernel
+                    :Possible Values: []
+            </meta>
+        </arg>
+
+        <arg name="smooth"  physical="float.vector" default="none"  >
+            <meta key="doc">
+                Smooth (Gaussian)
+                    
+                    The input image is smoothed using Gaussian kernel
+            </meta>
+        </arg>
+
+        <arg name="threshold"  physical="float"   >
+            <meta key="doc">
+                Threshold image
+                    
+                    Threshold the input image (val<thr?val=0:val=1) 
+                    :Possible Values: []
+            </meta>
+        </arg>
+
+    </parameters>
+</msml:operator>

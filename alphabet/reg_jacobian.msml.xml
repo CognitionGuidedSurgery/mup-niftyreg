@@ -1,0 +1,78 @@
+
+<msml:operator xmlns:msml="http://sfb125.de/msml"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xsi:schemaLocation="http://sfb125.de/msml"
+               name="reg_jacobian">
+
+    <annotation>
+        <entry key="doc">
+            RegJacobian (NiftyReg)
+            ===========
+
+            
+
+            NiftyReg module to create Jacobian-based images
+
+            :License: BSD
+            :Contributor: Marc Modat (UCL)
+        </entry>
+        <entry key="category" value="Registration.NiftyReg" />
+    </annotation>
+
+
+    <runtime>
+        <sh template="reg_jacobian  --jac={jacDetImage} --jacL={logJacDetImage} --jacM={JacMatImage}  --trans={InTrans} --ref={referenceImageName} "/>
+    </runtime>
+
+    <input>
+    
+        <arg name="InTrans"  physical="['NII', 'NII.GZ', 'NRRD', 'TXT', 'MAT']" default="required"  >
+            <meta key="doc">
+                Input Trans.
+                    
+                    Input transformation
+            </meta>
+        </arg>
+
+        <arg name="referenceImageName"  physical="Image.NII,Image.NII..GZ,Image.NRRD,Image.PNG" default="required"  >
+            <meta key="doc">
+                Reference image
+                    
+                    Reference image filename, required if the transformation is a spline parametrisation
+            </meta>
+        </arg>
+
+    </input>
+
+    <output>
+    
+        <arg name="jacDetImage"  physical="Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG" default="jacDetImage.nii"  >
+            <meta key="doc">
+                Jac. det. image
+                    
+                    Jacobian determinant image
+            </meta>
+        </arg>
+
+        <arg name="logJacDetImage"  physical="Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG" default="logJacDetImage.nii"  >
+            <meta key="doc">
+                Log. Jac. det. image
+                    
+                    Log of the Jacobian determinant image
+            </meta>
+        </arg>
+
+        <arg name="JacMatImage"  physical="Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG" default="JacMatImage.nii"  >
+            <meta key="doc">
+                Jac. mat. image
+                    
+                    Jacobian matrix image
+            </meta>
+        </arg>
+
+    </output>
+
+    <parameters>
+    
+    </parameters>
+</msml:operator>

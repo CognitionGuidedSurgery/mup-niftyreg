@@ -1,0 +1,38 @@
+
+<msml:operator xmlns:msml="http://sfb125.de/msml"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xsi:schemaLocation="http://sfb125.de/msml"
+               name="reg_average">
+
+    <annotation>
+        <entry key="doc">
+            RegAverage (NiftyReg)
+            ===========
+
+            
+
+            NiftyReg module under construction
+
+            :License: BSD
+            :Contributor: Marc Modat (UCL)
+        </entry>
+        <entry key="category" value="Registration.NiftyReg" />
+    </annotation>
+
+
+    <runtime>
+        <sh template="reg_average   "/>
+    </runtime>
+
+    <input>
+    
+    </input>
+
+    <output>
+    
+    </output>
+
+    <parameters>
+    
+    </parameters>
+</msml:operator>

@@ -1,0 +1,326 @@
+
+<msml:operator xmlns:msml="http://sfb125.de/msml"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xsi:schemaLocation="http://sfb125.de/msml"
+               name="reg_f3d">
+
+    <annotation>
+        <entry key="doc">
+            RegF3D (NiftyReg)
+            ===========
+
+            
+
+            Module/executable for local registration (non-rigid) based on a cubic B-Spline deformation model
+
+            :License: BSD
+            :Contributor: Marc Modat, Pankaj Daga (UCL)
+        </entry>
+        <entry key="category" value="Registration.NiftyReg" />
+    </annotation>
+
+
+    <runtime>
+        <sh template="reg_f3d --sx={xAxisSpacing} --sy={yAxisSpacing} --sz={zAxisSpacing} --smooR={smoothReferenceWidth} --smooF={smoothFloatingWidth} --rbn={ReferenceBinNumber} --fbn={FloatingBinNumber} --rLwTh={ReferenceIntensityLowerThreshold} --rUpTh={ReferenceIntensityUpperThreshold} --fLwTh={FloatingIntensityLowerThreshold} --fUpTh={FloatingIntensityUpperThreshold} --be={BendingEnergyPenaltyTermWeight} --l2={L2NormPenaltyTermWeight} --jl={JacobianBasedPenaltyTermWeight} --noAppJL={NoJacobianBasedPenaltyTermApproximation} --nmi={UseNMI} --ssd={UseSSD} --lncc={UseLNCC} --kld={Use_KL_divergence} --ln={levelPyramidNumber} --lp={levelToPerformNumber} --maxit={iterationNumber} --noConj={NoConjugateGradient} --nopy={NoPyramid} --interp={interpolation} --vel={useVel}  --cpp={outputCPPFileName} --res={outputWarpedImageName}  --ref={referenceImageName} --flo={floatingImageName} --rmask={referenceMaskImageName} --inaff={inputAffineName} --incpp={inputControlPointPosition} --fmask={floatingMaskImageName} "/>
+    </runtime>
+
+    <input>
+    
+        <arg name="referenceImageName"  physical="Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG" default="required"  >
+            <meta key="doc">
+                Reference image
+                    
+                    Reference image filename (also called Target or Fixed)
+            </meta>
+        </arg>
+
+        <arg name="floatingImageName"  physical="Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG" default="required"  >
+            <meta key="doc">
+                Floating image
+                    
+                    Floating image filename (also called Source or moving)
+            </meta>
+        </arg>
+
+        <arg name="referenceMaskImageName"  physical="Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG"   >
+            <meta key="doc">
+                Ref. mask
+                    
+                    Reference mask image filename
+            </meta>
+        </arg>
+
+        <arg name="inputAffineName"  physical="['TXT', 'MAT']"   >
+            <meta key="doc">
+                Input affine trans. from RegAladin
+                    
+                    Affine registration matrix stored as a text file
+            </meta>
+        </arg>
+
+        <arg name="inputControlPointPosition"  physical="['NII', 'NII.GZ', 'NRRD']"   >
+            <meta key="doc">
+                Input trans. from RegF3D
+                    
+                    Control point position image from NiftyReg
+            </meta>
+        </arg>
+
+        <arg name="floatingMaskImageName"  physical="Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG"   >
+            <meta key="doc">
+                Flo. mask
+                    
+                    Floating mask image filename
+            </meta>
+        </arg>
+
+    </input>
+
+    <output>
+    
+        <arg name="outputCPPFileName"  physical="['NII', 'NII.GZ', 'NRRD']" default="outputCPP.nii"  >
+            <meta key="doc">
+                Trans. param image
+                    
+                    Control point position image
+            </meta>
+        </arg>
+
+        <arg name="outputWarpedImageName"  physical="Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG" default="outputResult.nii"  >
+            <meta key="doc">
+                Output warped image
+                    
+                    Warped floating image
+            </meta>
+        </arg>
+
+    </output>
+
+    <parameters>
+    
+        <arg name="xAxisSpacing"  physical="float" default="-5"  >
+            <meta key="doc">
+                x-axis spacing
+                    
+                    Control point spacing along the x-axis in mm (in voxel if negative value)
+                    :Possible Values: []
+            </meta>
+        </arg>
+
+        <arg name="yAxisSpacing"  physical="float" default="-5"  >
+            <meta key="doc">
+                y-axis spacing
+                    
+                    Control point spacing along the y-axis in mm (in voxel if negative value)
+                    :Possible Values: []
+            </meta>
+        </arg>
+
+        <arg name="zAxisSpacing"  physical="float" default="-5"  >
+            <meta key="doc">
+                z-axis spacing
+                    
+                    Control point spacing along the z-axis in mm (in voxel if negative value)
+                    :Possible Values: []
+            </meta>
+        </arg>
+
+        <arg name="smoothReferenceWidth"  physical="float" default="0"  >
+            <meta key="doc">
+                Ref .Smooth
+                    
+                    Standard deviation in mm (voxel if negative) of the Gaussian kernel used to smooth the reference image
+                    :Possible Values: []
+            </meta>
+        </arg>
+
+        <arg name="smoothFloatingWidth"  physical="float" default="0"  >
+            <meta key="doc">
+                Flo. smooth
+                    
+                    Standard deviation in mm (voxel if negative) of the Gaussian kernel used to smooth the Floating image
+                    :Possible Values: []
+            </meta>
+        </arg>
+
+        <arg name="ReferenceBinNumber"  physical="float" default="64"  >
+            <meta key="doc">
+                Ref. bin number
+                    
+                    Number of bin to use for the joint histogram computation - Reference image
+                    :Possible Values: []
+            </meta>
+        </arg>
+
+        <arg name="FloatingBinNumber"  physical="float" default="64"  >
+            <meta key="doc">
+                Flo. bin number
+                    
+                    Number of bin to use for the joint histogram computation - Floating image
+                    :Possible Values: []
+            </meta>
+        </arg>
+
+        <arg name="ReferenceIntensityLowerThreshold"  physical="float" default="-3.4e+38"  >
+            <meta key="doc">
+                Ref. low thr.
+                    
+                    Lower threshold intensity value to apply to the reference image
+                    :Possible Values: []
+            </meta>
+        </arg>
+
+        <arg name="ReferenceIntensityUpperThreshold"  physical="float" default="3.4e+38"  >
+            <meta key="doc">
+                Ref. up thr.
+                    
+                    Upper threshold intensity value to apply to the reference image
+                    :Possible Values: []
+            </meta>
+        </arg>
+
+        <arg name="FloatingIntensityLowerThreshold"  physical="float" default="-3.4e+38"  >
+            <meta key="doc">
+                Flo. low thr.
+                    
+                    Lower threshold intensity value to apply to the floating image
+                    :Possible Values: []
+            </meta>
+        </arg>
+
+        <arg name="FloatingIntensityUpperThreshold"  physical="float" default="3.4e+38"  >
+            <meta key="doc">
+                Flo. up thr.
+                    
+                    Upper threshold intensity value to apply to the floating image
+                    :Possible Values: []
+            </meta>
+        </arg>
+
+        <arg name="BendingEnergyPenaltyTermWeight"  physical="float" default="0.005"  >
+            <meta key="doc">
+                Bending Energ. weight
+                    
+                    Weight to apply to the bending energy
+                    :Possible Values: []
+            </meta>
+        </arg>
+
+        <arg name="L2NormPenaltyTermWeight"  physical="float" default="0"  >
+            <meta key="doc">
+                L2 norm weight
+                    
+                    Weight to apply to the L2 norm of the displacement
+                    :Possible Values: []
+            </meta>
+        </arg>
+
+        <arg name="JacobianBasedPenaltyTermWeight"  physical="float" default="0"  >
+            <meta key="doc">
+                Jac.-based pen. term
+                    
+                    Weight to apply to the Jacobian based penalty term
+                    :Possible Values: []
+            </meta>
+        </arg>
+
+        <arg name="NoJacobianBasedPenaltyTermApproximation"  physical="bool" default="false"  >
+            <meta key="doc">
+                No approx. Jac.-based term
+                    
+                    Do not approximate the Jacobian based penalty term at the control point position only
+            </meta>
+        </arg>
+
+        <arg name="UseNMI"  physical="bool" default="true"  >
+            <meta key="doc">
+                Use NMI
+                    
+                    To use the NMI as a measure of similarity
+            </meta>
+        </arg>
+
+        <arg name="UseSSD"  physical="bool" default="false"  >
+            <meta key="doc">
+                Use SSD
+                    
+                    To use the SSD as a measure of similarity instead of the NMI used by default
+            </meta>
+        </arg>
+
+        <arg name="UseLNCC"  physical="float" default="-999999"  >
+            <meta key="doc">
+                Use LNCC
+                    
+                    To use the LNCC as a measure of similarity instead of the NMI used by default and set the Gaussian standard deviation
+                    :Possible Values: []
+            </meta>
+        </arg>
+
+        <arg name="Use_KL_divergence"  physical="bool" default="false"  >
+            <meta key="doc">
+                Use KLD
+                    
+                    To use the KL divergence as a measure of similarity instead of the NMI used by default
+            </meta>
+        </arg>
+
+        <arg name="levelPyramidNumber"  physical="int" default="3"  >
+            <meta key="doc">
+                Level number
+                    
+                    Number of level to use to generate the pyramids for the coarse-to-fine approach
+            </meta>
+        </arg>
+
+        <arg name="levelToPerformNumber"  physical="int" default="3"  >
+            <meta key="doc">
+                Level to perform
+                    
+                    Number of level to use to run the registration once the pyramids have been created
+            </meta>
+        </arg>
+
+        <arg name="iterationNumber"  physical="int" default="300"  >
+            <meta key="doc">
+                Iteration number
+                    
+                    Maximal number of iteration of the trimmed least square approach to perform per total
+            </meta>
+        </arg>
+
+        <arg name="NoConjugateGradient"  physical="bool" default="false"  >
+            <meta key="doc">
+                no conj. grad. ascent
+                    
+                    By default a conjugate gradient ascent is used. Active this option to use a steepest gradient ascent scheme.
+            </meta>
+        </arg>
+
+        <arg name="NoPyramid"  physical="bool" default="false"  >
+            <meta key="doc">
+                no pyramid
+                    
+                    Active this option to perform every level at full resolution
+            </meta>
+        </arg>
+
+        <arg name="interpolation"  physical="vector.int" default="1"  >
+            <meta key="doc">
+                Interpolation order
+                    
+                    Interpolation order to use internally to warp the floating image
+                    :Possible Values: ['0', '1', '3']
+            </meta>
+        </arg>
+
+        <arg name="useVel"  physical="bool" default="false"  >
+            <meta key="doc">
+                Use F3D2
+                    
+                    Performs a symmetric registration where both, forward and backward transformations are optimised. The transformation are parametrised using a stationary velocity field
+            </meta>
+        </arg>
+
+    </parameters>
+</msml:operator>

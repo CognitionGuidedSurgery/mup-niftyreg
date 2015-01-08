@@ -1,0 +1,239 @@
+
+<msml:operator xmlns:msml="http://sfb125.de/msml"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xsi:schemaLocation="http://sfb125.de/msml"
+               name="reg_aladin">
+
+    <annotation>
+        <entry key="doc">
+            RegAladin (NiftyReg)
+            ===========
+
+            
+
+            Module/executable for global registration (rigid and/or affine) based on a block-matching approach and a trimmed least squared optimisation.
+
+            :License: BSD
+            :Contributor: Marc Modat, Pankaj Daga, David Cash (UCL)
+        </entry>
+        <entry key="category" value="Registration.NiftyReg" />
+    </annotation>
+
+
+    <runtime>
+        <sh template="reg_aladin --smooR={smoothReferenceWidth} --smooF={smoothFloatingWidth} --refLowThr={referenceLowerThreshold} --refUpThr={referenceUpperThreshold} --floLowThr={floatingLowerThreshold} --floUpThr={floatingUpperThreshold} --ln={levelPyramidNumber} --lp={levelToPerformNumber} --maxit={iterationNumber} --pv={blockPercentage} --pi={inlierPercentage} --noSym={noSym} --rigOnly={rigidOnly} --affDirect={affineOnly} --nac={useHeaderOrigin} --iso={makeIsotropic} --interp={interpolation}  --aff={outputAffineFileName} --res={outputWarpedImageName}  --ref={referenceImageName} --flo={floatingImageName} --rmask={referenceMaskImageName} --fmask={floatingMaskImageName} --inaff={inputAffineName} "/>
+    </runtime>
+
+    <input>
+    
+        <arg name="referenceImageName"  physical="Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG" default="required"  >
+            <meta key="doc">
+                Reference image
+                    
+                    Reference image filename (also called Target or Fixed)
+            </meta>
+        </arg>
+
+        <arg name="floatingImageName"  physical="Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG" default="required"  >
+            <meta key="doc">
+                Floating image
+                    
+                    Floating image filename (also called Source or moving)
+            </meta>
+        </arg>
+
+        <arg name="referenceMaskImageName"  physical="Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG"   >
+            <meta key="doc">
+                Ref. mask
+                    
+                    Filename of a mask image in the reference space
+            </meta>
+        </arg>
+
+        <arg name="floatingMaskImageName"  physical="Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG"   >
+            <meta key="doc">
+                Flo. mask
+                    
+                    Filename of a mask image in the floating space. Only used when symmetric turned on
+            </meta>
+        </arg>
+
+        <arg name="inputAffineName"  physical="['TXT', 'MAT']"   >
+            <meta key="doc">
+                Input affine trans. from NiftyReg
+                    
+                    Affine registration matrix stored as a text file
+            </meta>
+        </arg>
+
+    </input>
+
+    <output>
+    
+        <arg name="outputAffineFileName"  physical="['TXT', 'MAT']" default="outputAffineResult.txt"  >
+            <meta key="doc">
+                Output affine filename
+                    
+                    Affine registration matrix output, saved as a text file
+            </meta>
+        </arg>
+
+        <arg name="outputWarpedImageName"  physical="Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG" default="outputAffineResult.nii"  >
+            <meta key="doc">
+                Output warped image
+                    
+                    Warped floating image
+            </meta>
+        </arg>
+
+    </output>
+
+    <parameters>
+    
+        <arg name="smoothReferenceWidth"  physical="float" default="0"  >
+            <meta key="doc">
+                Ref .Smooth
+                    
+                    Standard deviation in mm (voxel if negative) of the Gaussian kernel used to smooth the reference image
+                    :Possible Values: []
+            </meta>
+        </arg>
+
+        <arg name="smoothFloatingWidth"  physical="float" default="0"  >
+            <meta key="doc">
+                Flo. smooth
+                    
+                    Standard deviation in mm (voxel if negative) of the Gaussian kernel used to smooth the Floating image
+                    :Possible Values: []
+            </meta>
+        </arg>
+
+        <arg name="referenceLowerThreshold"  physical="float" default="0"  >
+            <meta key="doc">
+                Ref. Low Thr.
+                    
+                    Lower threshold value applied to the reference image
+                    :Possible Values: []
+            </meta>
+        </arg>
+
+        <arg name="referenceUpperThreshold"  physical="float" default="0"  >
+            <meta key="doc">
+                Ref. Up Thr.
+                    
+                    Upper threshold value applied to the reference image
+                    :Possible Values: []
+            </meta>
+        </arg>
+
+        <arg name="floatingLowerThreshold"  physical="float" default="0"  >
+            <meta key="doc">
+                Flo. Low Thr.
+                    
+                    Lower threshold value applied to the floating image
+                    :Possible Values: []
+            </meta>
+        </arg>
+
+        <arg name="floatingUpperThreshold"  physical="float" default="0"  >
+            <meta key="doc">
+                Flo. Up Thr.
+                    
+                    Upper threshold value applied to the floating image
+                    :Possible Values: []
+            </meta>
+        </arg>
+
+        <arg name="levelPyramidNumber"  physical="int" default="3"  >
+            <meta key="doc">
+                Level number
+                    
+                    Number of levels to use to generate the pyramids for the coarse-to-fine approach
+            </meta>
+        </arg>
+
+        <arg name="levelToPerformNumber"  physical="int" default="3"  >
+            <meta key="doc">
+                Level to perform
+                    
+                    Number of levels to use to run the registration once the pyramids have been created
+            </meta>
+        </arg>
+
+        <arg name="iterationNumber"  physical="int" default="5"  >
+            <meta key="doc">
+                Iteration number
+                    
+                    Maximal number of iterations of the trimmed least square approach to perform per level
+            </meta>
+        </arg>
+
+        <arg name="blockPercentage"  physical="float" default="50"  >
+            <meta key="doc">
+                Percentage block
+                    
+                    Percentage of blocks to use in the optimisation scheme
+                    :Possible Values: []
+            </meta>
+        </arg>
+
+        <arg name="inlierPercentage"  physical="float" default="50"  >
+            <meta key="doc">
+                Percentage inlier
+                    
+                    Percentage of blocks to consider as inlier in the optimisation scheme
+                    :Possible Values: []
+            </meta>
+        </arg>
+
+        <arg name="noSym"  physical="bool" default="false"  >
+            <meta key="doc">
+                Disable symmetry
+                    
+                    The symmetric version of the algorithm is used by default. Use this flag to disable it
+            </meta>
+        </arg>
+
+        <arg name="rigidOnly"  physical="bool" default="false"  >
+            <meta key="doc">
+                Rigid only
+                    
+                    Performs only a rigid registration, rigid then affine by default
+            </meta>
+        </arg>
+
+        <arg name="affineOnly"  physical="bool" default="false"  >
+            <meta key="doc">
+                Affine only
+                    
+                    Performs only an affine registration, rigid then affine by default
+            </meta>
+        </arg>
+
+        <arg name="useHeaderOrigin"  physical="bool" default="false"  >
+            <meta key="doc">
+                Use header
+                    
+                    Use the nifti header origin to initialise the transformation. Image centres are used by default
+            </meta>
+        </arg>
+
+        <arg name="makeIsotropic"  physical="bool" default="false"  >
+            <meta key="doc">
+                Make images isotropic
+                    
+                    Make floating and reference images isotropic if required
+            </meta>
+        </arg>
+
+        <arg name="interpolation"  physical="vector.int" default="1"  >
+            <meta key="doc">
+                Interpolation order
+                    
+                    Interpolation order to use internally to warp the floating image
+                    :Possible Values: ['0', '1', '3']
+            </meta>
+        </arg>
+
+    </parameters>
+</msml:operator>
