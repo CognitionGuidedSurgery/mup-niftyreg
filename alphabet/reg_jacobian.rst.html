@@ -358,28 +358,24 @@ ul.auto-toc {
 <tr class="field"><th class="field-name">type:</th><td class="field-body"><p class="first"><strong>ShellOperator</strong></p>
 </td>
 </tr>
-<tr class="field"><th class="field-name">template:</th><td class="field-body"><p class="first"><a href="#id1"><span class="problematic" id="id2">``</span></a>reg_jacobian  --jac={jacDetImage} --jacL={logJacDetImage} --jacM={JacMatImage}  --trans={InTrans} --ref={referenceImageName} ``</p>
-<div class="system-message" id="id1">
-<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">reg_jacobian.rst</tt>, line 21); <em><a href="#id2">backlink</a></em></p>
-<p>Inline literal start-string without end-string.</p>
-</div>
+<tr class="field"><th class="field-name">template:</th><td class="field-body"><p class="first"><tt class="docutils literal">reg_jacobian <span class="pre">{{tJacMatImage|option('jacM')}}</span> <span class="pre">{{tlogJacDetImage|option('jacL')}}</span> <span class="pre">{{tjacDetImage|option('jac')}}</span>&nbsp; <span class="pre">{{InTrans|option('trans')}}</span> <span class="pre">{{referenceImageName|option('ref')}}</span></tt></p>
 </td>
 </tr>
 <tr class="field"><th class="field-name">Inputs:</th><td class="field-body"><ul class="first">
-<li><p class="first"><strong>InTrans</strong> : ['NII', 'NII.GZ', 'NRRD', 'TXT', 'MAT']/</p>
+<li><p class="first"><strong>InTrans</strong> : TXT/</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">default:</th><td class="field-body">required</td>
+<tr class="field"><th class="field-name">default:</th><td class="field-body"></td>
 </tr>
-<tr class="field"><th class="field-name">target:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">target:</th><td class="field-body"></td>
 </tr>
 <tr class="field"><th class="field-name">index:</th><td class="field-body">None</td>
 </tr>
 <tr class="field"><th class="field-name">channel:</th><td class="field-body">input</td>
 </tr>
-<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">--trans</td>
+<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">{{InTrans|option('trans')}}</td>
 </tr>
 </tbody>
 </table>
@@ -390,20 +386,20 @@ ul.auto-toc {
 <p>Input Trans.</p>
 <p>Input transformation</p>
 </li>
-<li><p class="first"><strong>referenceImageName</strong> : Image.NII,Image.NII..GZ,Image.NRRD,Image.PNG/</p>
+<li><p class="first"><strong>referenceImageName</strong> : PNG/</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">default:</th><td class="field-body">required</td>
+<tr class="field"><th class="field-name">default:</th><td class="field-body"></td>
 </tr>
-<tr class="field"><th class="field-name">target:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">target:</th><td class="field-body"></td>
 </tr>
 <tr class="field"><th class="field-name">index:</th><td class="field-body">None</td>
 </tr>
 <tr class="field"><th class="field-name">channel:</th><td class="field-body">input</td>
 </tr>
-<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">--ref</td>
+<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">{{referenceImageName|option('ref')}}</td>
 </tr>
 </tbody>
 </table>
@@ -418,20 +414,20 @@ ul.auto-toc {
 </td>
 </tr>
 <tr class="field"><th class="field-name">Output:</th><td class="field-body"><ul class="first">
-<li><p class="first"><strong>jacDetImage</strong> : Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG/</p>
+<li><p class="first"><strong>jacDetImage</strong> : PNG/</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">default:</th><td class="field-body">jacDetImage.nii</td>
+<tr class="field"><th class="field-name">default:</th><td class="field-body"></td>
 </tr>
-<tr class="field"><th class="field-name">target:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">target:</th><td class="field-body"></td>
 </tr>
 <tr class="field"><th class="field-name">index:</th><td class="field-body">None</td>
 </tr>
 <tr class="field"><th class="field-name">channel:</th><td class="field-body">output</td>
 </tr>
-<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">--jac</td>
+<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">{{jacDetImage|option('jac')}}</td>
 </tr>
 </tbody>
 </table>
@@ -442,20 +438,20 @@ ul.auto-toc {
 <p>Jac. det. image</p>
 <p>Jacobian determinant image</p>
 </li>
-<li><p class="first"><strong>logJacDetImage</strong> : Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG/</p>
+<li><p class="first"><strong>logJacDetImage</strong> : PNG/</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">default:</th><td class="field-body">logJacDetImage.nii</td>
+<tr class="field"><th class="field-name">default:</th><td class="field-body"></td>
 </tr>
-<tr class="field"><th class="field-name">target:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">target:</th><td class="field-body"></td>
 </tr>
 <tr class="field"><th class="field-name">index:</th><td class="field-body">None</td>
 </tr>
 <tr class="field"><th class="field-name">channel:</th><td class="field-body">output</td>
 </tr>
-<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">--jacL</td>
+<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">{{logJacDetImage|option('jacL')}}</td>
 </tr>
 </tbody>
 </table>
@@ -466,20 +462,20 @@ ul.auto-toc {
 <p>Log. Jac. det. image</p>
 <p>Log of the Jacobian determinant image</p>
 </li>
-<li><p class="first"><strong>JacMatImage</strong> : Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG/</p>
+<li><p class="first"><strong>JacMatImage</strong> : PNG/</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">default:</th><td class="field-body">JacMatImage.nii</td>
+<tr class="field"><th class="field-name">default:</th><td class="field-body"></td>
 </tr>
-<tr class="field"><th class="field-name">target:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">target:</th><td class="field-body"></td>
 </tr>
 <tr class="field"><th class="field-name">index:</th><td class="field-body">None</td>
 </tr>
 <tr class="field"><th class="field-name">channel:</th><td class="field-body">output</td>
 </tr>
-<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">--jacM</td>
+<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">{{JacMatImage|option('jacM')}}</td>
 </tr>
 </tbody>
 </table>
@@ -493,7 +489,81 @@ ul.auto-toc {
 </ul>
 </td>
 </tr>
-<tr class="field"><th class="field-name">Parameter:</th><td class="field-body"></td>
+<tr class="field"><th class="field-name">Parameter:</th><td class="field-body"><ul class="first last">
+<li><p class="first"><strong>tJacMatImage</strong> : str/</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">default:</th><td class="field-body"></td>
+</tr>
+<tr class="field"><th class="field-name">target:</th><td class="field-body">True</td>
+</tr>
+<tr class="field"><th class="field-name">index:</th><td class="field-body"></td>
+</tr>
+<tr class="field"><th class="field-name">channel:</th><td class="field-body">output</td>
+</tr>
+<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">{{tJacMatImage|option('jacM')}}</td>
+</tr>
+</tbody>
+</table>
+<div class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">reg_jacobian.rst</tt>, line 101)</p>
+<p>Field list ends without a blank line; unexpected unindent.</p>
+</div>
+<p>Jac. mat. image</p>
+<p>Jacobian matrix image</p>
+</li>
+<li><p class="first"><strong>tlogJacDetImage</strong> : str/</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">default:</th><td class="field-body"></td>
+</tr>
+<tr class="field"><th class="field-name">target:</th><td class="field-body">True</td>
+</tr>
+<tr class="field"><th class="field-name">index:</th><td class="field-body"></td>
+</tr>
+<tr class="field"><th class="field-name">channel:</th><td class="field-body">output</td>
+</tr>
+<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">{{tlogJacDetImage|option('jacL')}}</td>
+</tr>
+</tbody>
+</table>
+<div class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">reg_jacobian.rst</tt>, line 113)</p>
+<p>Field list ends without a blank line; unexpected unindent.</p>
+</div>
+<p>Log. Jac. det. image</p>
+<p>Log of the Jacobian determinant image</p>
+</li>
+<li><p class="first"><strong>tjacDetImage</strong> : str/</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">default:</th><td class="field-body"></td>
+</tr>
+<tr class="field"><th class="field-name">target:</th><td class="field-body">True</td>
+</tr>
+<tr class="field"><th class="field-name">index:</th><td class="field-body"></td>
+</tr>
+<tr class="field"><th class="field-name">channel:</th><td class="field-body">output</td>
+</tr>
+<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">{{tjacDetImage|option('jac')}}</td>
+</tr>
+</tbody>
+</table>
+<div class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">reg_jacobian.rst</tt>, line 125)</p>
+<p>Field list ends without a blank line; unexpected unindent.</p>
+</div>
+<p>Jac. det. image</p>
+<p>Jacobian determinant image</p>
+</li>
+</ul>
+</td>
 </tr>
 </tbody>
 </table>

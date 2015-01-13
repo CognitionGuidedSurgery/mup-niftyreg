@@ -21,24 +21,30 @@
 
 
     <runtime>
-        <sh template="reg_jacobian  --jac={jacDetImage} --jacL={logJacDetImage} --jacM={JacMatImage}  --trans={InTrans} --ref={referenceImageName} "/>
+        <sh template="reg_jacobian {{tJacMatImage|option('jacM')}} {{tlogJacDetImage|option('jacL')}} {{tjacDetImage|option('jac')}}  {{InTrans|option('trans')}} {{referenceImageName|option('ref')}}"/>
     </runtime>
 
     <input>
     
-        <arg name="InTrans"  physical="['NII', 'NII.GZ', 'NRRD', 'TXT', 'MAT']" default="required"  >
+        <arg name="InTrans" 
+             physical="TXT"
+             
+             >
             <meta key="doc">
-                Input Trans.
+            <![CDATA[Input Trans.
                     
-                    Input transformation
+                    Input transformation]]>
             </meta>
         </arg>
 
-        <arg name="referenceImageName"  physical="Image.NII,Image.NII..GZ,Image.NRRD,Image.PNG" default="required"  >
+        <arg name="referenceImageName" 
+             physical="PNG"
+             
+             >
             <meta key="doc">
-                Reference image
+            <![CDATA[Reference image
                     
-                    Reference image filename, required if the transformation is a spline parametrisation
+                    Reference image filename, required if the transformation is a spline parametrisation]]>
             </meta>
         </arg>
 
@@ -46,27 +52,36 @@
 
     <output>
     
-        <arg name="jacDetImage"  physical="Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG" default="jacDetImage.nii"  >
+        <arg name="jacDetImage" 
+             physical="PNG"
+             
+             >
             <meta key="doc">
-                Jac. det. image
+            <![CDATA[Jac. det. image
                     
-                    Jacobian determinant image
+                    Jacobian determinant image]]>
             </meta>
         </arg>
 
-        <arg name="logJacDetImage"  physical="Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG" default="logJacDetImage.nii"  >
+        <arg name="logJacDetImage" 
+             physical="PNG"
+             
+             >
             <meta key="doc">
-                Log. Jac. det. image
+            <![CDATA[Log. Jac. det. image
                     
-                    Log of the Jacobian determinant image
+                    Log of the Jacobian determinant image]]>
             </meta>
         </arg>
 
-        <arg name="JacMatImage"  physical="Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG" default="JacMatImage.nii"  >
+        <arg name="JacMatImage" 
+             physical="PNG"
+             
+             >
             <meta key="doc">
-                Jac. mat. image
+            <![CDATA[Jac. mat. image
                     
-                    Jacobian matrix image
+                    Jacobian matrix image]]>
             </meta>
         </arg>
 
@@ -74,5 +89,38 @@
 
     <parameters>
     
+        <arg name="tJacMatImage" 
+             physical="str"
+             
+             target="true">
+            <meta key="doc">
+            <![CDATA[Jac. mat. image
+                    
+                    Jacobian matrix image]]>
+            </meta>
+        </arg>
+
+        <arg name="tlogJacDetImage" 
+             physical="str"
+             
+             target="true">
+            <meta key="doc">
+            <![CDATA[Log. Jac. det. image
+                    
+                    Log of the Jacobian determinant image]]>
+            </meta>
+        </arg>
+
+        <arg name="tjacDetImage" 
+             physical="str"
+             
+             target="true">
+            <meta key="doc">
+            <![CDATA[Jac. det. image
+                    
+                    Jacobian determinant image]]>
+            </meta>
+        </arg>
+
     </parameters>
 </msml:operator>

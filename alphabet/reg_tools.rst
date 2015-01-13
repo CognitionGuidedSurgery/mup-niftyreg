@@ -18,90 +18,90 @@ NiftyReg module under construction
 :Category: Registration.NiftyReg
 
 :type: **ShellOperator**
-:template: ``reg_tools --float={convertToFloat} --down={downSample} --bin={binarize} --iso={isotropic} --add={addConst} --sub={subConst} --mul={mulConst} --div={divConst} --smo={smooth} --smoG={smooth} --thr={threshold}   --in={inputImageName} --rms={rmsImages} --nan={maskImage} --add={addImage} --sub={subtractImage} --mul={multiplyImage} --div={divideImage} ``
+:template: ``reg_tools {{convertToFloat|flag('float')}} {{downSample|flag('down')}} {{binarize|flag('bin')}} {{isotropic|flag('iso')}} {{addConst|option('add')}} {{subConst|option('sub')}} {{mulConst|option('mul')}} {{divConst|option('div')}} {{smooth|option('smo')}} {{smooth|option('smoG')}} {{threshold|option('thr')}}  {{inputImageName|option('in')}} {{rmsImages|option('rms')}} {{maskImage|option('nan')}} {{addImage|option('add')}} {{subtractImage|option('sub')}} {{multiplyImage|option('mul')}} {{divideImage|option('div')}}``
 
 
 :Inputs:
     
-        * **inputImageName** : Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG/
+        * **inputImageName** : PNG/
 
-          :default: required
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: input
-          :cli_flag: --in
+          :cli_flag: {{inputImageName|option('in')}}
           Input image
           
           Input image filename
 
     
-        * **rmsImages** : Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG/
+        * **rmsImages** : PNG/
 
-          :default: None
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: input
-          :cli_flag: --rms
+          :cli_flag: {{rmsImages|option('rms')}}
           Compute RMS 
           
           Compute the mean rms between this image and the input image
 
     
-        * **maskImage** : Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG/
+        * **maskImage** : PNG/
 
-          :default: None
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: input
-          :cli_flag: --nan
+          :cli_flag: {{maskImage|option('nan')}}
           Mask Image
           
           This image is used to mask the input image. Voxels outside of the mask are set to nan
 
     
-        * **addImage** : Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG/
+        * **addImage** : PNG/
 
-          :default: None
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: input
-          :cli_flag: --add
+          :cli_flag: {{addImage|option('add')}}
           Add Images
           
           This image is added to the input image
 
     
-        * **subtractImage** : Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG/
+        * **subtractImage** : PNG/
 
-          :default: None
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: input
-          :cli_flag: --sub
+          :cli_flag: {{subtractImage|option('sub')}}
           Subtract Images
           
           This image is subtracted from the input image
 
     
-        * **multiplyImage** : Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG/
+        * **multiplyImage** : PNG/
 
-          :default: None
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: input
-          :cli_flag: --mul
+          :cli_flag: {{multiplyImage|option('mul')}}
           Multiply Images
           
           This image is multiplied with input image
 
     
-        * **divideImage** : Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG/
+        * **divideImage** : PNG/
 
-          :default: None
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: input
-          :cli_flag: --div
+          :cli_flag: {{divideImage|option('div')}}
           Divide Input Image
           
           The input image is divided by this image
@@ -117,11 +117,11 @@ NiftyReg module under construction
     
         * **convertToFloat** : bool/
 
-          :default: None
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: None
-          :cli_flag: --float
+          :cli_flag: {{convertToFloat|flag('float')}}
           Convert to float
           
           The input image is converted to float
@@ -129,11 +129,11 @@ NiftyReg module under construction
     
         * **downSample** : bool/
 
-          :default: None
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: None
-          :cli_flag: --down
+          :cli_flag: {{downSample|flag('down')}}
           Downsample
           
           The input image is downsampled 2 times
@@ -141,11 +141,11 @@ NiftyReg module under construction
     
         * **binarize** : bool/
 
-          :default: None
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: None
-          :cli_flag: --bin
+          :cli_flag: {{binarize|flag('bin')}}
           Binarize
           
           Binarise the input image (val!=0?val=1:val=0) 
@@ -153,11 +153,11 @@ NiftyReg module under construction
     
         * **isotropic** : bool/
 
-          :default: None
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: None
-          :cli_flag: --iso
+          :cli_flag: {{isotropic|flag('iso')}}
           Make Isotropic
           
           The resulting image is made isotropic
@@ -165,11 +165,11 @@ NiftyReg module under construction
     
         * **addConst** : float/
 
-          :default: none
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: None
-          :cli_flag: --add
+          :cli_flag: {{addConst|option('add')}}
           Add
           
           Add the constant value to the input image
@@ -178,11 +178,11 @@ NiftyReg module under construction
     
         * **subConst** : float/
 
-          :default: none
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: None
-          :cli_flag: --sub
+          :cli_flag: {{subConst|option('sub')}}
           Subtract
           
           Subtract the constant value from the input image
@@ -191,11 +191,11 @@ NiftyReg module under construction
     
         * **mulConst** : float/
 
-          :default: none
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: None
-          :cli_flag: --mul
+          :cli_flag: {{mulConst|option('mul')}}
           Multiply
           
           Multiply the input image with the constant value
@@ -204,11 +204,11 @@ NiftyReg module under construction
     
         * **divConst** : float/
 
-          :default: none
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: None
-          :cli_flag: --div
+          :cli_flag: {{divConst|option('div')}}
           Divide
           
           Divide the input image with the constant value
@@ -217,24 +217,24 @@ NiftyReg module under construction
     
         * **smooth** : float/
 
-          :default: none
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: None
-          :cli_flag: --smo
+          :cli_flag: {{smooth|option('smo')}}
           Smooth (B-Spline)
           
           The input image is smoothed using a cubic b-spline kernel
           :Possible Values: []
 
     
-        * **smooth** : float.vector/
+        * **smooth** : vector.float/
 
-          :default: none
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: None
-          :cli_flag: --smoG
+          :cli_flag: {{smooth|option('smoG')}}
           Smooth (Gaussian)
           
           The input image is smoothed using Gaussian kernel
@@ -242,11 +242,11 @@ NiftyReg module under construction
     
         * **threshold** : float/
 
-          :default: None
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: None
-          :cli_flag: --thr
+          :cli_flag: {{threshold|option('thr')}}
           Threshold image
           
           Threshold the input image (val<thr?val=0:val=1) 

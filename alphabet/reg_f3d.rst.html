@@ -358,28 +358,24 @@ ul.auto-toc {
 <tr class="field"><th class="field-name">type:</th><td class="field-body"><p class="first"><strong>ShellOperator</strong></p>
 </td>
 </tr>
-<tr class="field"><th class="field-name">template:</th><td class="field-body"><p class="first"><a href="#id1"><span class="problematic" id="id2">``</span></a>reg_f3d --sx={xAxisSpacing} --sy={yAxisSpacing} --sz={zAxisSpacing} --smooR={smoothReferenceWidth} --smooF={smoothFloatingWidth} --rbn={ReferenceBinNumber} --fbn={FloatingBinNumber} --rLwTh={ReferenceIntensityLowerThreshold} --rUpTh={ReferenceIntensityUpperThreshold} --fLwTh={FloatingIntensityLowerThreshold} --fUpTh={FloatingIntensityUpperThreshold} --be={BendingEnergyPenaltyTermWeight} --l2={L2NormPenaltyTermWeight} --jl={JacobianBasedPenaltyTermWeight} --noAppJL={NoJacobianBasedPenaltyTermApproximation} --nmi={UseNMI} --ssd={UseSSD} --lncc={UseLNCC} --kld={Use_KL_divergence} --ln={levelPyramidNumber} --lp={levelToPerformNumber} --maxit={iterationNumber} --noConj={NoConjugateGradient} --nopy={NoPyramid} --interp={interpolation} --vel={useVel}  --cpp={outputCPPFileName} --res={outputWarpedImageName}  --ref={referenceImageName} --flo={floatingImageName} --rmask={referenceMaskImageName} --inaff={inputAffineName} --incpp={inputControlPointPosition} --fmask={floatingMaskImageName} ``</p>
-<div class="system-message" id="id1">
-<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">reg_f3d.rst</tt>, line 21); <em><a href="#id2">backlink</a></em></p>
-<p>Inline literal start-string without end-string.</p>
-</div>
+<tr class="field"><th class="field-name">template:</th><td class="field-body"><p class="first"><tt class="docutils literal">reg_f3d <span class="pre">{{toutputWarpedImageName|option('res')}}</span> <span class="pre">{{toutputCPPFileName|option('cpp')}}</span> <span class="pre">{{xAxisSpacing|option('sx')}}</span> <span class="pre">{{yAxisSpacing|option('sy')}}</span> <span class="pre">{{zAxisSpacing|option('sz')}}</span> <span class="pre">{{smoothReferenceWidth|option('smooR')}}</span> <span class="pre">{{smoothFloatingWidth|option('smooF')}}</span> <span class="pre">{{ReferenceBinNumber|option('rbn')}}</span> <span class="pre">{{FloatingBinNumber|option('fbn')}}</span> <span class="pre">{{ReferenceIntensityLowerThreshold|option('rLwTh')}}</span> <span class="pre">{{ReferenceIntensityUpperThreshold|option('rUpTh')}}</span> <span class="pre">{{FloatingIntensityLowerThreshold|option('fLwTh')}}</span> <span class="pre">{{FloatingIntensityUpperThreshold|option('fUpTh')}}</span> <span class="pre">{{BendingEnergyPenaltyTermWeight|option('be')}}</span> <span class="pre">{{L2NormPenaltyTermWeight|option('l2')}}</span> <span class="pre">{{JacobianBasedPenaltyTermWeight|option('jl')}}</span> <span class="pre">{{NoJacobianBasedPenaltyTermApproximation|flag('noAppJL')}}</span> <span class="pre">{{UseNMI|flag('nmi')}}</span> <span class="pre">{{UseSSD|flag('ssd')}}</span> <span class="pre">{{UseLNCC|option('lncc')}}</span> <span class="pre">{{Use_KL_divergence|flag('kld')}}</span> <span class="pre">{{levelPyramidNumber|option('ln')}}</span> <span class="pre">{{levelToPerformNumber|option('lp')}}</span> <span class="pre">{{iterationNumber|option('maxit')}}</span> <span class="pre">{{NoConjugateGradient|flag('noConj')}}</span> <span class="pre">{{NoPyramid|flag('nopy')}}</span> <span class="pre">{{interpolation|option('interp')}}</span> <span class="pre">{{useVel|flag('vel')}}</span>&nbsp; <span class="pre">{{referenceImageName|option('ref')}}</span> <span class="pre">{{floatingImageName|option('flo')}}</span> <span class="pre">{{referenceMaskImageName|option('rmask')}}</span> <span class="pre">{{inputAffineName|option('inaff')}}</span> <span class="pre">{{inputControlPointPosition|option('incpp')}}</span> <span class="pre">{{floatingMaskImageName|option('fmask')}}</span></tt></p>
 </td>
 </tr>
 <tr class="field"><th class="field-name">Inputs:</th><td class="field-body"><ul class="first">
-<li><p class="first"><strong>referenceImageName</strong> : Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG/</p>
+<li><p class="first"><strong>referenceImageName</strong> : PNG/</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">default:</th><td class="field-body">required</td>
+<tr class="field"><th class="field-name">default:</th><td class="field-body"></td>
 </tr>
-<tr class="field"><th class="field-name">target:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">target:</th><td class="field-body"></td>
 </tr>
 <tr class="field"><th class="field-name">index:</th><td class="field-body">None</td>
 </tr>
 <tr class="field"><th class="field-name">channel:</th><td class="field-body">input</td>
 </tr>
-<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">--ref</td>
+<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">{{referenceImageName|option('ref')}}</td>
 </tr>
 </tbody>
 </table>
@@ -390,20 +386,20 @@ ul.auto-toc {
 <p>Reference image</p>
 <p>Reference image filename (also called Target or Fixed)</p>
 </li>
-<li><p class="first"><strong>floatingImageName</strong> : Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG/</p>
+<li><p class="first"><strong>floatingImageName</strong> : PNG/</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">default:</th><td class="field-body">required</td>
+<tr class="field"><th class="field-name">default:</th><td class="field-body"></td>
 </tr>
-<tr class="field"><th class="field-name">target:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">target:</th><td class="field-body"></td>
 </tr>
 <tr class="field"><th class="field-name">index:</th><td class="field-body">None</td>
 </tr>
 <tr class="field"><th class="field-name">channel:</th><td class="field-body">input</td>
 </tr>
-<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">--flo</td>
+<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">{{floatingImageName|option('flo')}}</td>
 </tr>
 </tbody>
 </table>
@@ -414,20 +410,20 @@ ul.auto-toc {
 <p>Floating image</p>
 <p>Floating image filename (also called Source or moving)</p>
 </li>
-<li><p class="first"><strong>referenceMaskImageName</strong> : Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG/</p>
+<li><p class="first"><strong>referenceMaskImageName</strong> : PNG/</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">default:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">default:</th><td class="field-body"></td>
 </tr>
-<tr class="field"><th class="field-name">target:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">target:</th><td class="field-body"></td>
 </tr>
 <tr class="field"><th class="field-name">index:</th><td class="field-body">None</td>
 </tr>
 <tr class="field"><th class="field-name">channel:</th><td class="field-body">input</td>
 </tr>
-<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">--rmask</td>
+<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">{{referenceMaskImageName|option('rmask')}}</td>
 </tr>
 </tbody>
 </table>
@@ -438,20 +434,20 @@ ul.auto-toc {
 <p>Ref. mask</p>
 <p>Reference mask image filename</p>
 </li>
-<li><p class="first"><strong>inputAffineName</strong> : ['TXT', 'MAT']/</p>
+<li><p class="first"><strong>inputAffineName</strong> : txt/</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">default:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">default:</th><td class="field-body"></td>
 </tr>
-<tr class="field"><th class="field-name">target:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">target:</th><td class="field-body"></td>
 </tr>
 <tr class="field"><th class="field-name">index:</th><td class="field-body">None</td>
 </tr>
 <tr class="field"><th class="field-name">channel:</th><td class="field-body">input</td>
 </tr>
-<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">--inaff</td>
+<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">{{inputAffineName|option('inaff')}}</td>
 </tr>
 </tbody>
 </table>
@@ -462,20 +458,20 @@ ul.auto-toc {
 <p>Input affine trans. from RegAladin</p>
 <p>Affine registration matrix stored as a text file</p>
 </li>
-<li><p class="first"><strong>inputControlPointPosition</strong> : ['NII', 'NII.GZ', 'NRRD']/</p>
+<li><p class="first"><strong>inputControlPointPosition</strong> : NRRD/</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">default:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">default:</th><td class="field-body"></td>
 </tr>
-<tr class="field"><th class="field-name">target:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">target:</th><td class="field-body"></td>
 </tr>
 <tr class="field"><th class="field-name">index:</th><td class="field-body">None</td>
 </tr>
 <tr class="field"><th class="field-name">channel:</th><td class="field-body">input</td>
 </tr>
-<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">--incpp</td>
+<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">{{inputControlPointPosition|option('incpp')}}</td>
 </tr>
 </tbody>
 </table>
@@ -486,20 +482,20 @@ ul.auto-toc {
 <p>Input trans. from RegF3D</p>
 <p>Control point position image from NiftyReg</p>
 </li>
-<li><p class="first"><strong>floatingMaskImageName</strong> : Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG/</p>
+<li><p class="first"><strong>floatingMaskImageName</strong> : PNG/</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">default:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">default:</th><td class="field-body"></td>
 </tr>
-<tr class="field"><th class="field-name">target:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">target:</th><td class="field-body"></td>
 </tr>
 <tr class="field"><th class="field-name">index:</th><td class="field-body">None</td>
 </tr>
 <tr class="field"><th class="field-name">channel:</th><td class="field-body">input</td>
 </tr>
-<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">--fmask</td>
+<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">{{floatingMaskImageName|option('fmask')}}</td>
 </tr>
 </tbody>
 </table>
@@ -514,20 +510,20 @@ ul.auto-toc {
 </td>
 </tr>
 <tr class="field"><th class="field-name">Output:</th><td class="field-body"><ul class="first">
-<li><p class="first"><strong>outputCPPFileName</strong> : ['NII', 'NII.GZ', 'NRRD']/</p>
+<li><p class="first"><strong>outputCPPFileName</strong> : NRRD/</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">default:</th><td class="field-body">outputCPP.nii</td>
+<tr class="field"><th class="field-name">default:</th><td class="field-body"></td>
 </tr>
-<tr class="field"><th class="field-name">target:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">target:</th><td class="field-body"></td>
 </tr>
 <tr class="field"><th class="field-name">index:</th><td class="field-body">None</td>
 </tr>
 <tr class="field"><th class="field-name">channel:</th><td class="field-body">output</td>
 </tr>
-<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">--cpp</td>
+<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">{{outputCPPFileName|option('cpp')}}</td>
 </tr>
 </tbody>
 </table>
@@ -538,20 +534,20 @@ ul.auto-toc {
 <p>Trans. param image</p>
 <p>Control point position image</p>
 </li>
-<li><p class="first"><strong>outputWarpedImageName</strong> : Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG/</p>
+<li><p class="first"><strong>outputWarpedImageName</strong> : PNG/</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">default:</th><td class="field-body">outputResult.nii</td>
+<tr class="field"><th class="field-name">default:</th><td class="field-body"></td>
 </tr>
-<tr class="field"><th class="field-name">target:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">target:</th><td class="field-body"></td>
 </tr>
 <tr class="field"><th class="field-name">index:</th><td class="field-body">None</td>
 </tr>
 <tr class="field"><th class="field-name">channel:</th><td class="field-body">output</td>
 </tr>
-<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">--res</td>
+<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">{{outputWarpedImageName|option('res')}}</td>
 </tr>
 </tbody>
 </table>
@@ -566,25 +562,73 @@ ul.auto-toc {
 </td>
 </tr>
 <tr class="field"><th class="field-name">Parameter:</th><td class="field-body"><ul class="first last">
-<li><p class="first"><strong>xAxisSpacing</strong> : float/</p>
+<li><p class="first"><strong>toutputWarpedImageName</strong> : str/</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">default:</th><td class="field-body">-5</td>
+<tr class="field"><th class="field-name">default:</th><td class="field-body"></td>
 </tr>
-<tr class="field"><th class="field-name">target:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">target:</th><td class="field-body">True</td>
 </tr>
-<tr class="field"><th class="field-name">index:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">index:</th><td class="field-body"></td>
 </tr>
-<tr class="field"><th class="field-name">channel:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">channel:</th><td class="field-body">output</td>
 </tr>
-<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">--sx</td>
+<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">{{toutputWarpedImageName|option('res')}}</td>
 </tr>
 </tbody>
 </table>
 <div class="system-message">
 <p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">reg_f3d.rst</tt>, line 137)</p>
+<p>Field list ends without a blank line; unexpected unindent.</p>
+</div>
+<p>Output warped image</p>
+<p>Warped floating image</p>
+</li>
+<li><p class="first"><strong>toutputCPPFileName</strong> : str/</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">default:</th><td class="field-body"></td>
+</tr>
+<tr class="field"><th class="field-name">target:</th><td class="field-body">True</td>
+</tr>
+<tr class="field"><th class="field-name">index:</th><td class="field-body"></td>
+</tr>
+<tr class="field"><th class="field-name">channel:</th><td class="field-body">output</td>
+</tr>
+<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">{{toutputCPPFileName|option('cpp')}}</td>
+</tr>
+</tbody>
+</table>
+<div class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">reg_f3d.rst</tt>, line 149)</p>
+<p>Field list ends without a blank line; unexpected unindent.</p>
+</div>
+<p>Trans. param image</p>
+<p>Control point position image</p>
+</li>
+<li><p class="first"><strong>xAxisSpacing</strong> : float/</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">default:</th><td class="field-body"></td>
+</tr>
+<tr class="field"><th class="field-name">target:</th><td class="field-body"></td>
+</tr>
+<tr class="field"><th class="field-name">index:</th><td class="field-body">None</td>
+</tr>
+<tr class="field"><th class="field-name">channel:</th><td class="field-body">None</td>
+</tr>
+<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">{{xAxisSpacing|option('sx')}}</td>
+</tr>
+</tbody>
+</table>
+<div class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">reg_f3d.rst</tt>, line 161)</p>
 <p>Field list ends without a blank line; unexpected unindent.</p>
 </div>
 <p>x-axis spacing</p>
@@ -596,20 +640,20 @@ ul.auto-toc {
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">default:</th><td class="field-body">-5</td>
+<tr class="field"><th class="field-name">default:</th><td class="field-body"></td>
 </tr>
-<tr class="field"><th class="field-name">target:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">target:</th><td class="field-body"></td>
 </tr>
 <tr class="field"><th class="field-name">index:</th><td class="field-body">None</td>
 </tr>
 <tr class="field"><th class="field-name">channel:</th><td class="field-body">None</td>
 </tr>
-<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">--sy</td>
+<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">{{yAxisSpacing|option('sy')}}</td>
 </tr>
 </tbody>
 </table>
 <div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">reg_f3d.rst</tt>, line 150)</p>
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">reg_f3d.rst</tt>, line 174)</p>
 <p>Field list ends without a blank line; unexpected unindent.</p>
 </div>
 <p>y-axis spacing</p>
@@ -621,20 +665,20 @@ ul.auto-toc {
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">default:</th><td class="field-body">-5</td>
+<tr class="field"><th class="field-name">default:</th><td class="field-body"></td>
 </tr>
-<tr class="field"><th class="field-name">target:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">target:</th><td class="field-body"></td>
 </tr>
 <tr class="field"><th class="field-name">index:</th><td class="field-body">None</td>
 </tr>
 <tr class="field"><th class="field-name">channel:</th><td class="field-body">None</td>
 </tr>
-<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">--sz</td>
+<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">{{zAxisSpacing|option('sz')}}</td>
 </tr>
 </tbody>
 </table>
 <div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">reg_f3d.rst</tt>, line 163)</p>
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">reg_f3d.rst</tt>, line 187)</p>
 <p>Field list ends without a blank line; unexpected unindent.</p>
 </div>
 <p>z-axis spacing</p>
@@ -646,20 +690,20 @@ ul.auto-toc {
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">default:</th><td class="field-body">0</td>
+<tr class="field"><th class="field-name">default:</th><td class="field-body"></td>
 </tr>
-<tr class="field"><th class="field-name">target:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">target:</th><td class="field-body"></td>
 </tr>
 <tr class="field"><th class="field-name">index:</th><td class="field-body">None</td>
 </tr>
 <tr class="field"><th class="field-name">channel:</th><td class="field-body">None</td>
 </tr>
-<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">--smooR</td>
+<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">{{smoothReferenceWidth|option('smooR')}}</td>
 </tr>
 </tbody>
 </table>
 <div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">reg_f3d.rst</tt>, line 176)</p>
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">reg_f3d.rst</tt>, line 200)</p>
 <p>Field list ends without a blank line; unexpected unindent.</p>
 </div>
 <p>Ref .Smooth</p>
@@ -671,20 +715,20 @@ ul.auto-toc {
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">default:</th><td class="field-body">0</td>
+<tr class="field"><th class="field-name">default:</th><td class="field-body"></td>
 </tr>
-<tr class="field"><th class="field-name">target:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">target:</th><td class="field-body"></td>
 </tr>
 <tr class="field"><th class="field-name">index:</th><td class="field-body">None</td>
 </tr>
 <tr class="field"><th class="field-name">channel:</th><td class="field-body">None</td>
 </tr>
-<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">--smooF</td>
+<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">{{smoothFloatingWidth|option('smooF')}}</td>
 </tr>
 </tbody>
 </table>
 <div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">reg_f3d.rst</tt>, line 189)</p>
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">reg_f3d.rst</tt>, line 213)</p>
 <p>Field list ends without a blank line; unexpected unindent.</p>
 </div>
 <p>Flo. smooth</p>
@@ -696,20 +740,20 @@ ul.auto-toc {
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">default:</th><td class="field-body">64</td>
+<tr class="field"><th class="field-name">default:</th><td class="field-body"></td>
 </tr>
-<tr class="field"><th class="field-name">target:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">target:</th><td class="field-body"></td>
 </tr>
 <tr class="field"><th class="field-name">index:</th><td class="field-body">None</td>
 </tr>
 <tr class="field"><th class="field-name">channel:</th><td class="field-body">None</td>
 </tr>
-<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">--rbn</td>
+<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">{{ReferenceBinNumber|option('rbn')}}</td>
 </tr>
 </tbody>
 </table>
 <div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">reg_f3d.rst</tt>, line 202)</p>
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">reg_f3d.rst</tt>, line 226)</p>
 <p>Field list ends without a blank line; unexpected unindent.</p>
 </div>
 <p>Ref. bin number</p>
@@ -721,20 +765,20 @@ ul.auto-toc {
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">default:</th><td class="field-body">64</td>
+<tr class="field"><th class="field-name">default:</th><td class="field-body"></td>
 </tr>
-<tr class="field"><th class="field-name">target:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">target:</th><td class="field-body"></td>
 </tr>
 <tr class="field"><th class="field-name">index:</th><td class="field-body">None</td>
 </tr>
 <tr class="field"><th class="field-name">channel:</th><td class="field-body">None</td>
 </tr>
-<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">--fbn</td>
+<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">{{FloatingBinNumber|option('fbn')}}</td>
 </tr>
 </tbody>
 </table>
 <div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">reg_f3d.rst</tt>, line 215)</p>
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">reg_f3d.rst</tt>, line 239)</p>
 <p>Field list ends without a blank line; unexpected unindent.</p>
 </div>
 <p>Flo. bin number</p>
@@ -746,20 +790,20 @@ ul.auto-toc {
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">default:</th><td class="field-body">-3.4e+38</td>
+<tr class="field"><th class="field-name">default:</th><td class="field-body"></td>
 </tr>
-<tr class="field"><th class="field-name">target:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">target:</th><td class="field-body"></td>
 </tr>
 <tr class="field"><th class="field-name">index:</th><td class="field-body">None</td>
 </tr>
 <tr class="field"><th class="field-name">channel:</th><td class="field-body">None</td>
 </tr>
-<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">--rLwTh</td>
+<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">{{ReferenceIntensityLowerThreshold|option('rLwTh')}}</td>
 </tr>
 </tbody>
 </table>
 <div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">reg_f3d.rst</tt>, line 228)</p>
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">reg_f3d.rst</tt>, line 252)</p>
 <p>Field list ends without a blank line; unexpected unindent.</p>
 </div>
 <p>Ref. low thr.</p>
@@ -771,20 +815,20 @@ ul.auto-toc {
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">default:</th><td class="field-body">3.4e+38</td>
+<tr class="field"><th class="field-name">default:</th><td class="field-body"></td>
 </tr>
-<tr class="field"><th class="field-name">target:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">target:</th><td class="field-body"></td>
 </tr>
 <tr class="field"><th class="field-name">index:</th><td class="field-body">None</td>
 </tr>
 <tr class="field"><th class="field-name">channel:</th><td class="field-body">None</td>
 </tr>
-<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">--rUpTh</td>
+<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">{{ReferenceIntensityUpperThreshold|option('rUpTh')}}</td>
 </tr>
 </tbody>
 </table>
 <div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">reg_f3d.rst</tt>, line 241)</p>
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">reg_f3d.rst</tt>, line 265)</p>
 <p>Field list ends without a blank line; unexpected unindent.</p>
 </div>
 <p>Ref. up thr.</p>
@@ -796,20 +840,20 @@ ul.auto-toc {
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">default:</th><td class="field-body">-3.4e+38</td>
+<tr class="field"><th class="field-name">default:</th><td class="field-body"></td>
 </tr>
-<tr class="field"><th class="field-name">target:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">target:</th><td class="field-body"></td>
 </tr>
 <tr class="field"><th class="field-name">index:</th><td class="field-body">None</td>
 </tr>
 <tr class="field"><th class="field-name">channel:</th><td class="field-body">None</td>
 </tr>
-<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">--fLwTh</td>
+<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">{{FloatingIntensityLowerThreshold|option('fLwTh')}}</td>
 </tr>
 </tbody>
 </table>
 <div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">reg_f3d.rst</tt>, line 254)</p>
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">reg_f3d.rst</tt>, line 278)</p>
 <p>Field list ends without a blank line; unexpected unindent.</p>
 </div>
 <p>Flo. low thr.</p>
@@ -821,20 +865,20 @@ ul.auto-toc {
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">default:</th><td class="field-body">3.4e+38</td>
+<tr class="field"><th class="field-name">default:</th><td class="field-body"></td>
 </tr>
-<tr class="field"><th class="field-name">target:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">target:</th><td class="field-body"></td>
 </tr>
 <tr class="field"><th class="field-name">index:</th><td class="field-body">None</td>
 </tr>
 <tr class="field"><th class="field-name">channel:</th><td class="field-body">None</td>
 </tr>
-<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">--fUpTh</td>
+<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">{{FloatingIntensityUpperThreshold|option('fUpTh')}}</td>
 </tr>
 </tbody>
 </table>
 <div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">reg_f3d.rst</tt>, line 267)</p>
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">reg_f3d.rst</tt>, line 291)</p>
 <p>Field list ends without a blank line; unexpected unindent.</p>
 </div>
 <p>Flo. up thr.</p>
@@ -846,20 +890,20 @@ ul.auto-toc {
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">default:</th><td class="field-body">0.005</td>
+<tr class="field"><th class="field-name">default:</th><td class="field-body"></td>
 </tr>
-<tr class="field"><th class="field-name">target:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">target:</th><td class="field-body"></td>
 </tr>
 <tr class="field"><th class="field-name">index:</th><td class="field-body">None</td>
 </tr>
 <tr class="field"><th class="field-name">channel:</th><td class="field-body">None</td>
 </tr>
-<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">--be</td>
+<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">{{BendingEnergyPenaltyTermWeight|option('be')}}</td>
 </tr>
 </tbody>
 </table>
 <div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">reg_f3d.rst</tt>, line 280)</p>
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">reg_f3d.rst</tt>, line 304)</p>
 <p>Field list ends without a blank line; unexpected unindent.</p>
 </div>
 <p>Bending Energ. weight</p>
@@ -871,20 +915,20 @@ ul.auto-toc {
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">default:</th><td class="field-body">0</td>
+<tr class="field"><th class="field-name">default:</th><td class="field-body"></td>
 </tr>
-<tr class="field"><th class="field-name">target:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">target:</th><td class="field-body"></td>
 </tr>
 <tr class="field"><th class="field-name">index:</th><td class="field-body">None</td>
 </tr>
 <tr class="field"><th class="field-name">channel:</th><td class="field-body">None</td>
 </tr>
-<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">--l2</td>
+<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">{{L2NormPenaltyTermWeight|option('l2')}}</td>
 </tr>
 </tbody>
 </table>
 <div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">reg_f3d.rst</tt>, line 293)</p>
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">reg_f3d.rst</tt>, line 317)</p>
 <p>Field list ends without a blank line; unexpected unindent.</p>
 </div>
 <p>L2 norm weight</p>
@@ -896,20 +940,20 @@ ul.auto-toc {
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">default:</th><td class="field-body">0</td>
+<tr class="field"><th class="field-name">default:</th><td class="field-body"></td>
 </tr>
-<tr class="field"><th class="field-name">target:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">target:</th><td class="field-body"></td>
 </tr>
 <tr class="field"><th class="field-name">index:</th><td class="field-body">None</td>
 </tr>
 <tr class="field"><th class="field-name">channel:</th><td class="field-body">None</td>
 </tr>
-<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">--jl</td>
+<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">{{JacobianBasedPenaltyTermWeight|option('jl')}}</td>
 </tr>
 </tbody>
 </table>
 <div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">reg_f3d.rst</tt>, line 306)</p>
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">reg_f3d.rst</tt>, line 330)</p>
 <p>Field list ends without a blank line; unexpected unindent.</p>
 </div>
 <p>Jac.-based pen. term</p>
@@ -921,20 +965,20 @@ ul.auto-toc {
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">default:</th><td class="field-body">false</td>
+<tr class="field"><th class="field-name">default:</th><td class="field-body"></td>
 </tr>
-<tr class="field"><th class="field-name">target:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">target:</th><td class="field-body"></td>
 </tr>
 <tr class="field"><th class="field-name">index:</th><td class="field-body">None</td>
 </tr>
 <tr class="field"><th class="field-name">channel:</th><td class="field-body">None</td>
 </tr>
-<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">--noAppJL</td>
+<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">{{NoJacobianBasedPenaltyTermApproximation|flag('noAppJL')}}</td>
 </tr>
 </tbody>
 </table>
 <div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">reg_f3d.rst</tt>, line 319)</p>
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">reg_f3d.rst</tt>, line 343)</p>
 <p>Field list ends without a blank line; unexpected unindent.</p>
 </div>
 <p>No approx. Jac.-based term</p>
@@ -945,20 +989,20 @@ ul.auto-toc {
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">default:</th><td class="field-body">true</td>
+<tr class="field"><th class="field-name">default:</th><td class="field-body"></td>
 </tr>
-<tr class="field"><th class="field-name">target:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">target:</th><td class="field-body"></td>
 </tr>
 <tr class="field"><th class="field-name">index:</th><td class="field-body">None</td>
 </tr>
 <tr class="field"><th class="field-name">channel:</th><td class="field-body">None</td>
 </tr>
-<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">--nmi</td>
+<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">{{UseNMI|flag('nmi')}}</td>
 </tr>
 </tbody>
 </table>
 <div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">reg_f3d.rst</tt>, line 331)</p>
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">reg_f3d.rst</tt>, line 355)</p>
 <p>Field list ends without a blank line; unexpected unindent.</p>
 </div>
 <p>Use NMI</p>
@@ -969,20 +1013,20 @@ ul.auto-toc {
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">default:</th><td class="field-body">false</td>
+<tr class="field"><th class="field-name">default:</th><td class="field-body"></td>
 </tr>
-<tr class="field"><th class="field-name">target:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">target:</th><td class="field-body"></td>
 </tr>
 <tr class="field"><th class="field-name">index:</th><td class="field-body">None</td>
 </tr>
 <tr class="field"><th class="field-name">channel:</th><td class="field-body">None</td>
 </tr>
-<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">--ssd</td>
+<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">{{UseSSD|flag('ssd')}}</td>
 </tr>
 </tbody>
 </table>
 <div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">reg_f3d.rst</tt>, line 343)</p>
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">reg_f3d.rst</tt>, line 367)</p>
 <p>Field list ends without a blank line; unexpected unindent.</p>
 </div>
 <p>Use SSD</p>
@@ -993,20 +1037,20 @@ ul.auto-toc {
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">default:</th><td class="field-body">-999999</td>
+<tr class="field"><th class="field-name">default:</th><td class="field-body"></td>
 </tr>
-<tr class="field"><th class="field-name">target:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">target:</th><td class="field-body"></td>
 </tr>
 <tr class="field"><th class="field-name">index:</th><td class="field-body">None</td>
 </tr>
 <tr class="field"><th class="field-name">channel:</th><td class="field-body">None</td>
 </tr>
-<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">--lncc</td>
+<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">{{UseLNCC|option('lncc')}}</td>
 </tr>
 </tbody>
 </table>
 <div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">reg_f3d.rst</tt>, line 355)</p>
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">reg_f3d.rst</tt>, line 379)</p>
 <p>Field list ends without a blank line; unexpected unindent.</p>
 </div>
 <p>Use LNCC</p>
@@ -1018,20 +1062,20 @@ ul.auto-toc {
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">default:</th><td class="field-body">false</td>
+<tr class="field"><th class="field-name">default:</th><td class="field-body"></td>
 </tr>
-<tr class="field"><th class="field-name">target:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">target:</th><td class="field-body"></td>
 </tr>
 <tr class="field"><th class="field-name">index:</th><td class="field-body">None</td>
 </tr>
 <tr class="field"><th class="field-name">channel:</th><td class="field-body">None</td>
 </tr>
-<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">--kld</td>
+<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">{{Use_KL_divergence|flag('kld')}}</td>
 </tr>
 </tbody>
 </table>
 <div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">reg_f3d.rst</tt>, line 368)</p>
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">reg_f3d.rst</tt>, line 392)</p>
 <p>Field list ends without a blank line; unexpected unindent.</p>
 </div>
 <p>Use KLD</p>
@@ -1042,20 +1086,20 @@ ul.auto-toc {
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">default:</th><td class="field-body">3</td>
+<tr class="field"><th class="field-name">default:</th><td class="field-body"></td>
 </tr>
-<tr class="field"><th class="field-name">target:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">target:</th><td class="field-body"></td>
 </tr>
 <tr class="field"><th class="field-name">index:</th><td class="field-body">None</td>
 </tr>
 <tr class="field"><th class="field-name">channel:</th><td class="field-body">None</td>
 </tr>
-<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">--ln</td>
+<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">{{levelPyramidNumber|option('ln')}}</td>
 </tr>
 </tbody>
 </table>
 <div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">reg_f3d.rst</tt>, line 380)</p>
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">reg_f3d.rst</tt>, line 404)</p>
 <p>Field list ends without a blank line; unexpected unindent.</p>
 </div>
 <p>Level number</p>
@@ -1066,20 +1110,20 @@ ul.auto-toc {
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">default:</th><td class="field-body">3</td>
+<tr class="field"><th class="field-name">default:</th><td class="field-body"></td>
 </tr>
-<tr class="field"><th class="field-name">target:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">target:</th><td class="field-body"></td>
 </tr>
 <tr class="field"><th class="field-name">index:</th><td class="field-body">None</td>
 </tr>
 <tr class="field"><th class="field-name">channel:</th><td class="field-body">None</td>
 </tr>
-<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">--lp</td>
+<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">{{levelToPerformNumber|option('lp')}}</td>
 </tr>
 </tbody>
 </table>
 <div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">reg_f3d.rst</tt>, line 392)</p>
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">reg_f3d.rst</tt>, line 416)</p>
 <p>Field list ends without a blank line; unexpected unindent.</p>
 </div>
 <p>Level to perform</p>
@@ -1090,20 +1134,20 @@ ul.auto-toc {
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">default:</th><td class="field-body">300</td>
+<tr class="field"><th class="field-name">default:</th><td class="field-body"></td>
 </tr>
-<tr class="field"><th class="field-name">target:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">target:</th><td class="field-body"></td>
 </tr>
 <tr class="field"><th class="field-name">index:</th><td class="field-body">None</td>
 </tr>
 <tr class="field"><th class="field-name">channel:</th><td class="field-body">None</td>
 </tr>
-<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">--maxit</td>
+<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">{{iterationNumber|option('maxit')}}</td>
 </tr>
 </tbody>
 </table>
 <div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">reg_f3d.rst</tt>, line 404)</p>
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">reg_f3d.rst</tt>, line 428)</p>
 <p>Field list ends without a blank line; unexpected unindent.</p>
 </div>
 <p>Iteration number</p>
@@ -1114,20 +1158,20 @@ ul.auto-toc {
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">default:</th><td class="field-body">false</td>
+<tr class="field"><th class="field-name">default:</th><td class="field-body"></td>
 </tr>
-<tr class="field"><th class="field-name">target:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">target:</th><td class="field-body"></td>
 </tr>
 <tr class="field"><th class="field-name">index:</th><td class="field-body">None</td>
 </tr>
 <tr class="field"><th class="field-name">channel:</th><td class="field-body">None</td>
 </tr>
-<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">--noConj</td>
+<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">{{NoConjugateGradient|flag('noConj')}}</td>
 </tr>
 </tbody>
 </table>
 <div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">reg_f3d.rst</tt>, line 416)</p>
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">reg_f3d.rst</tt>, line 440)</p>
 <p>Field list ends without a blank line; unexpected unindent.</p>
 </div>
 <p>no conj. grad. ascent</p>
@@ -1138,20 +1182,20 @@ ul.auto-toc {
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">default:</th><td class="field-body">false</td>
+<tr class="field"><th class="field-name">default:</th><td class="field-body"></td>
 </tr>
-<tr class="field"><th class="field-name">target:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">target:</th><td class="field-body"></td>
 </tr>
 <tr class="field"><th class="field-name">index:</th><td class="field-body">None</td>
 </tr>
 <tr class="field"><th class="field-name">channel:</th><td class="field-body">None</td>
 </tr>
-<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">--nopy</td>
+<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">{{NoPyramid|flag('nopy')}}</td>
 </tr>
 </tbody>
 </table>
 <div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">reg_f3d.rst</tt>, line 428)</p>
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">reg_f3d.rst</tt>, line 452)</p>
 <p>Field list ends without a blank line; unexpected unindent.</p>
 </div>
 <p>no pyramid</p>
@@ -1162,20 +1206,20 @@ ul.auto-toc {
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">default:</th><td class="field-body">1</td>
+<tr class="field"><th class="field-name">default:</th><td class="field-body"></td>
 </tr>
-<tr class="field"><th class="field-name">target:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">target:</th><td class="field-body"></td>
 </tr>
 <tr class="field"><th class="field-name">index:</th><td class="field-body">None</td>
 </tr>
 <tr class="field"><th class="field-name">channel:</th><td class="field-body">None</td>
 </tr>
-<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">--interp</td>
+<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">{{interpolation|option('interp')}}</td>
 </tr>
 </tbody>
 </table>
 <div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">reg_f3d.rst</tt>, line 440)</p>
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">reg_f3d.rst</tt>, line 464)</p>
 <p>Field list ends without a blank line; unexpected unindent.</p>
 </div>
 <p>Interpolation order</p>
@@ -1187,20 +1231,20 @@ ul.auto-toc {
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">default:</th><td class="field-body">false</td>
+<tr class="field"><th class="field-name">default:</th><td class="field-body"></td>
 </tr>
-<tr class="field"><th class="field-name">target:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">target:</th><td class="field-body"></td>
 </tr>
 <tr class="field"><th class="field-name">index:</th><td class="field-body">None</td>
 </tr>
 <tr class="field"><th class="field-name">channel:</th><td class="field-body">None</td>
 </tr>
-<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">--vel</td>
+<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">{{useVel|flag('vel')}}</td>
 </tr>
 </tbody>
 </table>
 <div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">reg_f3d.rst</tt>, line 453)</p>
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">reg_f3d.rst</tt>, line 477)</p>
 <p>Field list ends without a blank line; unexpected unindent.</p>
 </div>
 <p>Use F3D2</p>

@@ -21,56 +21,74 @@
 
 
     <runtime>
-        <sh template="reg_f3d --sx={xAxisSpacing} --sy={yAxisSpacing} --sz={zAxisSpacing} --smooR={smoothReferenceWidth} --smooF={smoothFloatingWidth} --rbn={ReferenceBinNumber} --fbn={FloatingBinNumber} --rLwTh={ReferenceIntensityLowerThreshold} --rUpTh={ReferenceIntensityUpperThreshold} --fLwTh={FloatingIntensityLowerThreshold} --fUpTh={FloatingIntensityUpperThreshold} --be={BendingEnergyPenaltyTermWeight} --l2={L2NormPenaltyTermWeight} --jl={JacobianBasedPenaltyTermWeight} --noAppJL={NoJacobianBasedPenaltyTermApproximation} --nmi={UseNMI} --ssd={UseSSD} --lncc={UseLNCC} --kld={Use_KL_divergence} --ln={levelPyramidNumber} --lp={levelToPerformNumber} --maxit={iterationNumber} --noConj={NoConjugateGradient} --nopy={NoPyramid} --interp={interpolation} --vel={useVel}  --cpp={outputCPPFileName} --res={outputWarpedImageName}  --ref={referenceImageName} --flo={floatingImageName} --rmask={referenceMaskImageName} --inaff={inputAffineName} --incpp={inputControlPointPosition} --fmask={floatingMaskImageName} "/>
+        <sh template="reg_f3d {{toutputWarpedImageName|option('res')}} {{toutputCPPFileName|option('cpp')}} {{xAxisSpacing|option('sx')}} {{yAxisSpacing|option('sy')}} {{zAxisSpacing|option('sz')}} {{smoothReferenceWidth|option('smooR')}} {{smoothFloatingWidth|option('smooF')}} {{ReferenceBinNumber|option('rbn')}} {{FloatingBinNumber|option('fbn')}} {{ReferenceIntensityLowerThreshold|option('rLwTh')}} {{ReferenceIntensityUpperThreshold|option('rUpTh')}} {{FloatingIntensityLowerThreshold|option('fLwTh')}} {{FloatingIntensityUpperThreshold|option('fUpTh')}} {{BendingEnergyPenaltyTermWeight|option('be')}} {{L2NormPenaltyTermWeight|option('l2')}} {{JacobianBasedPenaltyTermWeight|option('jl')}} {{NoJacobianBasedPenaltyTermApproximation|flag('noAppJL')}} {{UseNMI|flag('nmi')}} {{UseSSD|flag('ssd')}} {{UseLNCC|option('lncc')}} {{Use_KL_divergence|flag('kld')}} {{levelPyramidNumber|option('ln')}} {{levelToPerformNumber|option('lp')}} {{iterationNumber|option('maxit')}} {{NoConjugateGradient|flag('noConj')}} {{NoPyramid|flag('nopy')}} {{interpolation|option('interp')}} {{useVel|flag('vel')}}  {{referenceImageName|option('ref')}} {{floatingImageName|option('flo')}} {{referenceMaskImageName|option('rmask')}} {{inputAffineName|option('inaff')}} {{inputControlPointPosition|option('incpp')}} {{floatingMaskImageName|option('fmask')}}"/>
     </runtime>
 
     <input>
     
-        <arg name="referenceImageName"  physical="Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG" default="required"  >
+        <arg name="referenceImageName" 
+             physical="PNG"
+             
+             >
             <meta key="doc">
-                Reference image
+            <![CDATA[Reference image
                     
-                    Reference image filename (also called Target or Fixed)
+                    Reference image filename (also called Target or Fixed)]]>
             </meta>
         </arg>
 
-        <arg name="floatingImageName"  physical="Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG" default="required"  >
+        <arg name="floatingImageName" 
+             physical="PNG"
+             
+             >
             <meta key="doc">
-                Floating image
+            <![CDATA[Floating image
                     
-                    Floating image filename (also called Source or moving)
+                    Floating image filename (also called Source or moving)]]>
             </meta>
         </arg>
 
-        <arg name="referenceMaskImageName"  physical="Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG"   >
+        <arg name="referenceMaskImageName" 
+             physical="PNG"
+             
+             >
             <meta key="doc">
-                Ref. mask
+            <![CDATA[Ref. mask
                     
-                    Reference mask image filename
+                    Reference mask image filename]]>
             </meta>
         </arg>
 
-        <arg name="inputAffineName"  physical="['TXT', 'MAT']"   >
+        <arg name="inputAffineName" 
+             physical="txt"
+             
+             >
             <meta key="doc">
-                Input affine trans. from RegAladin
+            <![CDATA[Input affine trans. from RegAladin
                     
-                    Affine registration matrix stored as a text file
+                    Affine registration matrix stored as a text file]]>
             </meta>
         </arg>
 
-        <arg name="inputControlPointPosition"  physical="['NII', 'NII.GZ', 'NRRD']"   >
+        <arg name="inputControlPointPosition" 
+             physical="NRRD"
+             
+             >
             <meta key="doc">
-                Input trans. from RegF3D
+            <![CDATA[Input trans. from RegF3D
                     
-                    Control point position image from NiftyReg
+                    Control point position image from NiftyReg]]>
             </meta>
         </arg>
 
-        <arg name="floatingMaskImageName"  physical="Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG"   >
+        <arg name="floatingMaskImageName" 
+             physical="PNG"
+             
+             >
             <meta key="doc">
-                Flo. mask
+            <![CDATA[Flo. mask
                     
-                    Floating mask image filename
+                    Floating mask image filename]]>
             </meta>
         </arg>
 
@@ -78,19 +96,25 @@
 
     <output>
     
-        <arg name="outputCPPFileName"  physical="['NII', 'NII.GZ', 'NRRD']" default="outputCPP.nii"  >
+        <arg name="outputCPPFileName" 
+             physical="NRRD"
+             
+             >
             <meta key="doc">
-                Trans. param image
+            <![CDATA[Trans. param image
                     
-                    Control point position image
+                    Control point position image]]>
             </meta>
         </arg>
 
-        <arg name="outputWarpedImageName"  physical="Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG" default="outputResult.nii"  >
+        <arg name="outputWarpedImageName" 
+             physical="PNG"
+             
+             >
             <meta key="doc">
-                Output warped image
+            <![CDATA[Output warped image
                     
-                    Warped floating image
+                    Warped floating image]]>
             </meta>
         </arg>
 
@@ -98,227 +122,327 @@
 
     <parameters>
     
-        <arg name="xAxisSpacing"  physical="float" default="-5"  >
+        <arg name="toutputWarpedImageName" 
+             physical="str"
+             
+             target="true">
             <meta key="doc">
-                x-axis spacing
+            <![CDATA[Output warped image
+                    
+                    Warped floating image]]>
+            </meta>
+        </arg>
+
+        <arg name="toutputCPPFileName" 
+             physical="str"
+             
+             target="true">
+            <meta key="doc">
+            <![CDATA[Trans. param image
+                    
+                    Control point position image]]>
+            </meta>
+        </arg>
+
+        <arg name="xAxisSpacing" 
+             physical="float"
+             
+             >
+            <meta key="doc">
+            <![CDATA[x-axis spacing
                     
                     Control point spacing along the x-axis in mm (in voxel if negative value)
-                    :Possible Values: []
+                    :Possible Values: []]]>
             </meta>
         </arg>
 
-        <arg name="yAxisSpacing"  physical="float" default="-5"  >
+        <arg name="yAxisSpacing" 
+             physical="float"
+             
+             >
             <meta key="doc">
-                y-axis spacing
+            <![CDATA[y-axis spacing
                     
                     Control point spacing along the y-axis in mm (in voxel if negative value)
-                    :Possible Values: []
+                    :Possible Values: []]]>
             </meta>
         </arg>
 
-        <arg name="zAxisSpacing"  physical="float" default="-5"  >
+        <arg name="zAxisSpacing" 
+             physical="float"
+             
+             >
             <meta key="doc">
-                z-axis spacing
+            <![CDATA[z-axis spacing
                     
                     Control point spacing along the z-axis in mm (in voxel if negative value)
-                    :Possible Values: []
+                    :Possible Values: []]]>
             </meta>
         </arg>
 
-        <arg name="smoothReferenceWidth"  physical="float" default="0"  >
+        <arg name="smoothReferenceWidth" 
+             physical="float"
+             
+             >
             <meta key="doc">
-                Ref .Smooth
+            <![CDATA[Ref .Smooth
                     
                     Standard deviation in mm (voxel if negative) of the Gaussian kernel used to smooth the reference image
-                    :Possible Values: []
+                    :Possible Values: []]]>
             </meta>
         </arg>
 
-        <arg name="smoothFloatingWidth"  physical="float" default="0"  >
+        <arg name="smoothFloatingWidth" 
+             physical="float"
+             
+             >
             <meta key="doc">
-                Flo. smooth
+            <![CDATA[Flo. smooth
                     
                     Standard deviation in mm (voxel if negative) of the Gaussian kernel used to smooth the Floating image
-                    :Possible Values: []
+                    :Possible Values: []]]>
             </meta>
         </arg>
 
-        <arg name="ReferenceBinNumber"  physical="float" default="64"  >
+        <arg name="ReferenceBinNumber" 
+             physical="float"
+             
+             >
             <meta key="doc">
-                Ref. bin number
+            <![CDATA[Ref. bin number
                     
                     Number of bin to use for the joint histogram computation - Reference image
-                    :Possible Values: []
+                    :Possible Values: []]]>
             </meta>
         </arg>
 
-        <arg name="FloatingBinNumber"  physical="float" default="64"  >
+        <arg name="FloatingBinNumber" 
+             physical="float"
+             
+             >
             <meta key="doc">
-                Flo. bin number
+            <![CDATA[Flo. bin number
                     
                     Number of bin to use for the joint histogram computation - Floating image
-                    :Possible Values: []
+                    :Possible Values: []]]>
             </meta>
         </arg>
 
-        <arg name="ReferenceIntensityLowerThreshold"  physical="float" default="-3.4e+38"  >
+        <arg name="ReferenceIntensityLowerThreshold" 
+             physical="float"
+             
+             >
             <meta key="doc">
-                Ref. low thr.
+            <![CDATA[Ref. low thr.
                     
                     Lower threshold intensity value to apply to the reference image
-                    :Possible Values: []
+                    :Possible Values: []]]>
             </meta>
         </arg>
 
-        <arg name="ReferenceIntensityUpperThreshold"  physical="float" default="3.4e+38"  >
+        <arg name="ReferenceIntensityUpperThreshold" 
+             physical="float"
+             
+             >
             <meta key="doc">
-                Ref. up thr.
+            <![CDATA[Ref. up thr.
                     
                     Upper threshold intensity value to apply to the reference image
-                    :Possible Values: []
+                    :Possible Values: []]]>
             </meta>
         </arg>
 
-        <arg name="FloatingIntensityLowerThreshold"  physical="float" default="-3.4e+38"  >
+        <arg name="FloatingIntensityLowerThreshold" 
+             physical="float"
+             
+             >
             <meta key="doc">
-                Flo. low thr.
+            <![CDATA[Flo. low thr.
                     
                     Lower threshold intensity value to apply to the floating image
-                    :Possible Values: []
+                    :Possible Values: []]]>
             </meta>
         </arg>
 
-        <arg name="FloatingIntensityUpperThreshold"  physical="float" default="3.4e+38"  >
+        <arg name="FloatingIntensityUpperThreshold" 
+             physical="float"
+             
+             >
             <meta key="doc">
-                Flo. up thr.
+            <![CDATA[Flo. up thr.
                     
                     Upper threshold intensity value to apply to the floating image
-                    :Possible Values: []
+                    :Possible Values: []]]>
             </meta>
         </arg>
 
-        <arg name="BendingEnergyPenaltyTermWeight"  physical="float" default="0.005"  >
+        <arg name="BendingEnergyPenaltyTermWeight" 
+             physical="float"
+             
+             >
             <meta key="doc">
-                Bending Energ. weight
+            <![CDATA[Bending Energ. weight
                     
                     Weight to apply to the bending energy
-                    :Possible Values: []
+                    :Possible Values: []]]>
             </meta>
         </arg>
 
-        <arg name="L2NormPenaltyTermWeight"  physical="float" default="0"  >
+        <arg name="L2NormPenaltyTermWeight" 
+             physical="float"
+             
+             >
             <meta key="doc">
-                L2 norm weight
+            <![CDATA[L2 norm weight
                     
                     Weight to apply to the L2 norm of the displacement
-                    :Possible Values: []
+                    :Possible Values: []]]>
             </meta>
         </arg>
 
-        <arg name="JacobianBasedPenaltyTermWeight"  physical="float" default="0"  >
+        <arg name="JacobianBasedPenaltyTermWeight" 
+             physical="float"
+             
+             >
             <meta key="doc">
-                Jac.-based pen. term
+            <![CDATA[Jac.-based pen. term
                     
                     Weight to apply to the Jacobian based penalty term
-                    :Possible Values: []
+                    :Possible Values: []]]>
             </meta>
         </arg>
 
-        <arg name="NoJacobianBasedPenaltyTermApproximation"  physical="bool" default="false"  >
+        <arg name="NoJacobianBasedPenaltyTermApproximation" 
+             physical="bool"
+             
+             >
             <meta key="doc">
-                No approx. Jac.-based term
+            <![CDATA[No approx. Jac.-based term
                     
-                    Do not approximate the Jacobian based penalty term at the control point position only
+                    Do not approximate the Jacobian based penalty term at the control point position only]]>
             </meta>
         </arg>
 
-        <arg name="UseNMI"  physical="bool" default="true"  >
+        <arg name="UseNMI" 
+             physical="bool"
+             
+             >
             <meta key="doc">
-                Use NMI
+            <![CDATA[Use NMI
                     
-                    To use the NMI as a measure of similarity
+                    To use the NMI as a measure of similarity]]>
             </meta>
         </arg>
 
-        <arg name="UseSSD"  physical="bool" default="false"  >
+        <arg name="UseSSD" 
+             physical="bool"
+             
+             >
             <meta key="doc">
-                Use SSD
+            <![CDATA[Use SSD
                     
-                    To use the SSD as a measure of similarity instead of the NMI used by default
+                    To use the SSD as a measure of similarity instead of the NMI used by default]]>
             </meta>
         </arg>
 
-        <arg name="UseLNCC"  physical="float" default="-999999"  >
+        <arg name="UseLNCC" 
+             physical="float"
+             
+             >
             <meta key="doc">
-                Use LNCC
+            <![CDATA[Use LNCC
                     
                     To use the LNCC as a measure of similarity instead of the NMI used by default and set the Gaussian standard deviation
-                    :Possible Values: []
+                    :Possible Values: []]]>
             </meta>
         </arg>
 
-        <arg name="Use_KL_divergence"  physical="bool" default="false"  >
+        <arg name="Use_KL_divergence" 
+             physical="bool"
+             
+             >
             <meta key="doc">
-                Use KLD
+            <![CDATA[Use KLD
                     
-                    To use the KL divergence as a measure of similarity instead of the NMI used by default
+                    To use the KL divergence as a measure of similarity instead of the NMI used by default]]>
             </meta>
         </arg>
 
-        <arg name="levelPyramidNumber"  physical="int" default="3"  >
+        <arg name="levelPyramidNumber" 
+             physical="int"
+             
+             >
             <meta key="doc">
-                Level number
+            <![CDATA[Level number
                     
-                    Number of level to use to generate the pyramids for the coarse-to-fine approach
+                    Number of level to use to generate the pyramids for the coarse-to-fine approach]]>
             </meta>
         </arg>
 
-        <arg name="levelToPerformNumber"  physical="int" default="3"  >
+        <arg name="levelToPerformNumber" 
+             physical="int"
+             
+             >
             <meta key="doc">
-                Level to perform
+            <![CDATA[Level to perform
                     
-                    Number of level to use to run the registration once the pyramids have been created
+                    Number of level to use to run the registration once the pyramids have been created]]>
             </meta>
         </arg>
 
-        <arg name="iterationNumber"  physical="int" default="300"  >
+        <arg name="iterationNumber" 
+             physical="int"
+             
+             >
             <meta key="doc">
-                Iteration number
+            <![CDATA[Iteration number
                     
-                    Maximal number of iteration of the trimmed least square approach to perform per total
+                    Maximal number of iteration of the trimmed least square approach to perform per total]]>
             </meta>
         </arg>
 
-        <arg name="NoConjugateGradient"  physical="bool" default="false"  >
+        <arg name="NoConjugateGradient" 
+             physical="bool"
+             
+             >
             <meta key="doc">
-                no conj. grad. ascent
+            <![CDATA[no conj. grad. ascent
                     
-                    By default a conjugate gradient ascent is used. Active this option to use a steepest gradient ascent scheme.
+                    By default a conjugate gradient ascent is used. Active this option to use a steepest gradient ascent scheme.]]>
             </meta>
         </arg>
 
-        <arg name="NoPyramid"  physical="bool" default="false"  >
+        <arg name="NoPyramid" 
+             physical="bool"
+             
+             >
             <meta key="doc">
-                no pyramid
+            <![CDATA[no pyramid
                     
-                    Active this option to perform every level at full resolution
+                    Active this option to perform every level at full resolution]]>
             </meta>
         </arg>
 
-        <arg name="interpolation"  physical="vector.int" default="1"  >
+        <arg name="interpolation" 
+             physical="vector.int"
+             
+             >
             <meta key="doc">
-                Interpolation order
+            <![CDATA[Interpolation order
                     
                     Interpolation order to use internally to warp the floating image
-                    :Possible Values: ['0', '1', '3']
+                    :Possible Values: ['0', '1', '3']]]>
             </meta>
         </arg>
 
-        <arg name="useVel"  physical="bool" default="false"  >
+        <arg name="useVel" 
+             physical="bool"
+             
+             >
             <meta key="doc">
-                Use F3D2
+            <![CDATA[Use F3D2
                     
-                    Performs a symmetric registration where both, forward and backward transformations are optimised. The transformation are parametrised using a stationary velocity field
+                    Performs a symmetric registration where both, forward and backward transformations are optimised. The transformation are parametrised using a stationary velocity field]]>
             </meta>
         </arg>
 

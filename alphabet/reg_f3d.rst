@@ -18,78 +18,78 @@ Module/executable for local registration (non-rigid) based on a cubic B-Spline d
 :Category: Registration.NiftyReg
 
 :type: **ShellOperator**
-:template: ``reg_f3d --sx={xAxisSpacing} --sy={yAxisSpacing} --sz={zAxisSpacing} --smooR={smoothReferenceWidth} --smooF={smoothFloatingWidth} --rbn={ReferenceBinNumber} --fbn={FloatingBinNumber} --rLwTh={ReferenceIntensityLowerThreshold} --rUpTh={ReferenceIntensityUpperThreshold} --fLwTh={FloatingIntensityLowerThreshold} --fUpTh={FloatingIntensityUpperThreshold} --be={BendingEnergyPenaltyTermWeight} --l2={L2NormPenaltyTermWeight} --jl={JacobianBasedPenaltyTermWeight} --noAppJL={NoJacobianBasedPenaltyTermApproximation} --nmi={UseNMI} --ssd={UseSSD} --lncc={UseLNCC} --kld={Use_KL_divergence} --ln={levelPyramidNumber} --lp={levelToPerformNumber} --maxit={iterationNumber} --noConj={NoConjugateGradient} --nopy={NoPyramid} --interp={interpolation} --vel={useVel}  --cpp={outputCPPFileName} --res={outputWarpedImageName}  --ref={referenceImageName} --flo={floatingImageName} --rmask={referenceMaskImageName} --inaff={inputAffineName} --incpp={inputControlPointPosition} --fmask={floatingMaskImageName} ``
+:template: ``reg_f3d {{toutputWarpedImageName|option('res')}} {{toutputCPPFileName|option('cpp')}} {{xAxisSpacing|option('sx')}} {{yAxisSpacing|option('sy')}} {{zAxisSpacing|option('sz')}} {{smoothReferenceWidth|option('smooR')}} {{smoothFloatingWidth|option('smooF')}} {{ReferenceBinNumber|option('rbn')}} {{FloatingBinNumber|option('fbn')}} {{ReferenceIntensityLowerThreshold|option('rLwTh')}} {{ReferenceIntensityUpperThreshold|option('rUpTh')}} {{FloatingIntensityLowerThreshold|option('fLwTh')}} {{FloatingIntensityUpperThreshold|option('fUpTh')}} {{BendingEnergyPenaltyTermWeight|option('be')}} {{L2NormPenaltyTermWeight|option('l2')}} {{JacobianBasedPenaltyTermWeight|option('jl')}} {{NoJacobianBasedPenaltyTermApproximation|flag('noAppJL')}} {{UseNMI|flag('nmi')}} {{UseSSD|flag('ssd')}} {{UseLNCC|option('lncc')}} {{Use_KL_divergence|flag('kld')}} {{levelPyramidNumber|option('ln')}} {{levelToPerformNumber|option('lp')}} {{iterationNumber|option('maxit')}} {{NoConjugateGradient|flag('noConj')}} {{NoPyramid|flag('nopy')}} {{interpolation|option('interp')}} {{useVel|flag('vel')}}  {{referenceImageName|option('ref')}} {{floatingImageName|option('flo')}} {{referenceMaskImageName|option('rmask')}} {{inputAffineName|option('inaff')}} {{inputControlPointPosition|option('incpp')}} {{floatingMaskImageName|option('fmask')}}``
 
 
 :Inputs:
     
-        * **referenceImageName** : Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG/
+        * **referenceImageName** : PNG/
 
-          :default: required
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: input
-          :cli_flag: --ref
+          :cli_flag: {{referenceImageName|option('ref')}}
           Reference image
           
           Reference image filename (also called Target or Fixed)
 
     
-        * **floatingImageName** : Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG/
+        * **floatingImageName** : PNG/
 
-          :default: required
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: input
-          :cli_flag: --flo
+          :cli_flag: {{floatingImageName|option('flo')}}
           Floating image
           
           Floating image filename (also called Source or moving)
 
     
-        * **referenceMaskImageName** : Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG/
+        * **referenceMaskImageName** : PNG/
 
-          :default: None
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: input
-          :cli_flag: --rmask
+          :cli_flag: {{referenceMaskImageName|option('rmask')}}
           Ref. mask
           
           Reference mask image filename
 
     
-        * **inputAffineName** : ['TXT', 'MAT']/
+        * **inputAffineName** : txt/
 
-          :default: None
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: input
-          :cli_flag: --inaff
+          :cli_flag: {{inputAffineName|option('inaff')}}
           Input affine trans. from RegAladin
           
           Affine registration matrix stored as a text file
 
     
-        * **inputControlPointPosition** : ['NII', 'NII.GZ', 'NRRD']/
+        * **inputControlPointPosition** : NRRD/
 
-          :default: None
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: input
-          :cli_flag: --incpp
+          :cli_flag: {{inputControlPointPosition|option('incpp')}}
           Input trans. from RegF3D
           
           Control point position image from NiftyReg
 
     
-        * **floatingMaskImageName** : Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG/
+        * **floatingMaskImageName** : PNG/
 
-          :default: None
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: input
-          :cli_flag: --fmask
+          :cli_flag: {{floatingMaskImageName|option('fmask')}}
           Flo. mask
           
           Floating mask image filename
@@ -99,25 +99,25 @@ Module/executable for local registration (non-rigid) based on a cubic B-Spline d
 
 :Output:
     
-        * **outputCPPFileName** : ['NII', 'NII.GZ', 'NRRD']/
+        * **outputCPPFileName** : NRRD/
 
-          :default: outputCPP.nii
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: output
-          :cli_flag: --cpp
+          :cli_flag: {{outputCPPFileName|option('cpp')}}
           Trans. param image
           
           Control point position image
 
     
-        * **outputWarpedImageName** : Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG/
+        * **outputWarpedImageName** : PNG/
 
-          :default: outputResult.nii
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: output
-          :cli_flag: --res
+          :cli_flag: {{outputWarpedImageName|option('res')}}
           Output warped image
           
           Warped floating image
@@ -127,13 +127,37 @@ Module/executable for local registration (non-rigid) based on a cubic B-Spline d
 
 :Parameter:
     
+        * **toutputWarpedImageName** : str/
+
+          :default: 
+          :target: True
+          :index: 
+          :channel: output
+          :cli_flag: {{toutputWarpedImageName|option('res')}}
+          Output warped image
+          
+          Warped floating image
+
+    
+        * **toutputCPPFileName** : str/
+
+          :default: 
+          :target: True
+          :index: 
+          :channel: output
+          :cli_flag: {{toutputCPPFileName|option('cpp')}}
+          Trans. param image
+          
+          Control point position image
+
+    
         * **xAxisSpacing** : float/
 
-          :default: -5
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: None
-          :cli_flag: --sx
+          :cli_flag: {{xAxisSpacing|option('sx')}}
           x-axis spacing
           
           Control point spacing along the x-axis in mm (in voxel if negative value)
@@ -142,11 +166,11 @@ Module/executable for local registration (non-rigid) based on a cubic B-Spline d
     
         * **yAxisSpacing** : float/
 
-          :default: -5
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: None
-          :cli_flag: --sy
+          :cli_flag: {{yAxisSpacing|option('sy')}}
           y-axis spacing
           
           Control point spacing along the y-axis in mm (in voxel if negative value)
@@ -155,11 +179,11 @@ Module/executable for local registration (non-rigid) based on a cubic B-Spline d
     
         * **zAxisSpacing** : float/
 
-          :default: -5
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: None
-          :cli_flag: --sz
+          :cli_flag: {{zAxisSpacing|option('sz')}}
           z-axis spacing
           
           Control point spacing along the z-axis in mm (in voxel if negative value)
@@ -168,11 +192,11 @@ Module/executable for local registration (non-rigid) based on a cubic B-Spline d
     
         * **smoothReferenceWidth** : float/
 
-          :default: 0
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: None
-          :cli_flag: --smooR
+          :cli_flag: {{smoothReferenceWidth|option('smooR')}}
           Ref .Smooth
           
           Standard deviation in mm (voxel if negative) of the Gaussian kernel used to smooth the reference image
@@ -181,11 +205,11 @@ Module/executable for local registration (non-rigid) based on a cubic B-Spline d
     
         * **smoothFloatingWidth** : float/
 
-          :default: 0
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: None
-          :cli_flag: --smooF
+          :cli_flag: {{smoothFloatingWidth|option('smooF')}}
           Flo. smooth
           
           Standard deviation in mm (voxel if negative) of the Gaussian kernel used to smooth the Floating image
@@ -194,11 +218,11 @@ Module/executable for local registration (non-rigid) based on a cubic B-Spline d
     
         * **ReferenceBinNumber** : float/
 
-          :default: 64
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: None
-          :cli_flag: --rbn
+          :cli_flag: {{ReferenceBinNumber|option('rbn')}}
           Ref. bin number
           
           Number of bin to use for the joint histogram computation - Reference image
@@ -207,11 +231,11 @@ Module/executable for local registration (non-rigid) based on a cubic B-Spline d
     
         * **FloatingBinNumber** : float/
 
-          :default: 64
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: None
-          :cli_flag: --fbn
+          :cli_flag: {{FloatingBinNumber|option('fbn')}}
           Flo. bin number
           
           Number of bin to use for the joint histogram computation - Floating image
@@ -220,11 +244,11 @@ Module/executable for local registration (non-rigid) based on a cubic B-Spline d
     
         * **ReferenceIntensityLowerThreshold** : float/
 
-          :default: -3.4e+38
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: None
-          :cli_flag: --rLwTh
+          :cli_flag: {{ReferenceIntensityLowerThreshold|option('rLwTh')}}
           Ref. low thr.
           
           Lower threshold intensity value to apply to the reference image
@@ -233,11 +257,11 @@ Module/executable for local registration (non-rigid) based on a cubic B-Spline d
     
         * **ReferenceIntensityUpperThreshold** : float/
 
-          :default: 3.4e+38
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: None
-          :cli_flag: --rUpTh
+          :cli_flag: {{ReferenceIntensityUpperThreshold|option('rUpTh')}}
           Ref. up thr.
           
           Upper threshold intensity value to apply to the reference image
@@ -246,11 +270,11 @@ Module/executable for local registration (non-rigid) based on a cubic B-Spline d
     
         * **FloatingIntensityLowerThreshold** : float/
 
-          :default: -3.4e+38
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: None
-          :cli_flag: --fLwTh
+          :cli_flag: {{FloatingIntensityLowerThreshold|option('fLwTh')}}
           Flo. low thr.
           
           Lower threshold intensity value to apply to the floating image
@@ -259,11 +283,11 @@ Module/executable for local registration (non-rigid) based on a cubic B-Spline d
     
         * **FloatingIntensityUpperThreshold** : float/
 
-          :default: 3.4e+38
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: None
-          :cli_flag: --fUpTh
+          :cli_flag: {{FloatingIntensityUpperThreshold|option('fUpTh')}}
           Flo. up thr.
           
           Upper threshold intensity value to apply to the floating image
@@ -272,11 +296,11 @@ Module/executable for local registration (non-rigid) based on a cubic B-Spline d
     
         * **BendingEnergyPenaltyTermWeight** : float/
 
-          :default: 0.005
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: None
-          :cli_flag: --be
+          :cli_flag: {{BendingEnergyPenaltyTermWeight|option('be')}}
           Bending Energ. weight
           
           Weight to apply to the bending energy
@@ -285,11 +309,11 @@ Module/executable for local registration (non-rigid) based on a cubic B-Spline d
     
         * **L2NormPenaltyTermWeight** : float/
 
-          :default: 0
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: None
-          :cli_flag: --l2
+          :cli_flag: {{L2NormPenaltyTermWeight|option('l2')}}
           L2 norm weight
           
           Weight to apply to the L2 norm of the displacement
@@ -298,11 +322,11 @@ Module/executable for local registration (non-rigid) based on a cubic B-Spline d
     
         * **JacobianBasedPenaltyTermWeight** : float/
 
-          :default: 0
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: None
-          :cli_flag: --jl
+          :cli_flag: {{JacobianBasedPenaltyTermWeight|option('jl')}}
           Jac.-based pen. term
           
           Weight to apply to the Jacobian based penalty term
@@ -311,11 +335,11 @@ Module/executable for local registration (non-rigid) based on a cubic B-Spline d
     
         * **NoJacobianBasedPenaltyTermApproximation** : bool/
 
-          :default: false
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: None
-          :cli_flag: --noAppJL
+          :cli_flag: {{NoJacobianBasedPenaltyTermApproximation|flag('noAppJL')}}
           No approx. Jac.-based term
           
           Do not approximate the Jacobian based penalty term at the control point position only
@@ -323,11 +347,11 @@ Module/executable for local registration (non-rigid) based on a cubic B-Spline d
     
         * **UseNMI** : bool/
 
-          :default: true
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: None
-          :cli_flag: --nmi
+          :cli_flag: {{UseNMI|flag('nmi')}}
           Use NMI
           
           To use the NMI as a measure of similarity
@@ -335,11 +359,11 @@ Module/executable for local registration (non-rigid) based on a cubic B-Spline d
     
         * **UseSSD** : bool/
 
-          :default: false
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: None
-          :cli_flag: --ssd
+          :cli_flag: {{UseSSD|flag('ssd')}}
           Use SSD
           
           To use the SSD as a measure of similarity instead of the NMI used by default
@@ -347,11 +371,11 @@ Module/executable for local registration (non-rigid) based on a cubic B-Spline d
     
         * **UseLNCC** : float/
 
-          :default: -999999
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: None
-          :cli_flag: --lncc
+          :cli_flag: {{UseLNCC|option('lncc')}}
           Use LNCC
           
           To use the LNCC as a measure of similarity instead of the NMI used by default and set the Gaussian standard deviation
@@ -360,11 +384,11 @@ Module/executable for local registration (non-rigid) based on a cubic B-Spline d
     
         * **Use_KL_divergence** : bool/
 
-          :default: false
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: None
-          :cli_flag: --kld
+          :cli_flag: {{Use_KL_divergence|flag('kld')}}
           Use KLD
           
           To use the KL divergence as a measure of similarity instead of the NMI used by default
@@ -372,11 +396,11 @@ Module/executable for local registration (non-rigid) based on a cubic B-Spline d
     
         * **levelPyramidNumber** : int/
 
-          :default: 3
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: None
-          :cli_flag: --ln
+          :cli_flag: {{levelPyramidNumber|option('ln')}}
           Level number
           
           Number of level to use to generate the pyramids for the coarse-to-fine approach
@@ -384,11 +408,11 @@ Module/executable for local registration (non-rigid) based on a cubic B-Spline d
     
         * **levelToPerformNumber** : int/
 
-          :default: 3
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: None
-          :cli_flag: --lp
+          :cli_flag: {{levelToPerformNumber|option('lp')}}
           Level to perform
           
           Number of level to use to run the registration once the pyramids have been created
@@ -396,11 +420,11 @@ Module/executable for local registration (non-rigid) based on a cubic B-Spline d
     
         * **iterationNumber** : int/
 
-          :default: 300
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: None
-          :cli_flag: --maxit
+          :cli_flag: {{iterationNumber|option('maxit')}}
           Iteration number
           
           Maximal number of iteration of the trimmed least square approach to perform per total
@@ -408,11 +432,11 @@ Module/executable for local registration (non-rigid) based on a cubic B-Spline d
     
         * **NoConjugateGradient** : bool/
 
-          :default: false
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: None
-          :cli_flag: --noConj
+          :cli_flag: {{NoConjugateGradient|flag('noConj')}}
           no conj. grad. ascent
           
           By default a conjugate gradient ascent is used. Active this option to use a steepest gradient ascent scheme.
@@ -420,11 +444,11 @@ Module/executable for local registration (non-rigid) based on a cubic B-Spline d
     
         * **NoPyramid** : bool/
 
-          :default: false
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: None
-          :cli_flag: --nopy
+          :cli_flag: {{NoPyramid|flag('nopy')}}
           no pyramid
           
           Active this option to perform every level at full resolution
@@ -432,11 +456,11 @@ Module/executable for local registration (non-rigid) based on a cubic B-Spline d
     
         * **interpolation** : vector.int/
 
-          :default: 1
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: None
-          :cli_flag: --interp
+          :cli_flag: {{interpolation|option('interp')}}
           Interpolation order
           
           Interpolation order to use internally to warp the floating image
@@ -445,11 +469,11 @@ Module/executable for local registration (non-rigid) based on a cubic B-Spline d
     
         * **useVel** : bool/
 
-          :default: false
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: None
-          :cli_flag: --vel
+          :cli_flag: {{useVel|flag('vel')}}
           Use F3D2
           
           Performs a symmetric registration where both, forward and backward transformations are optimised. The transformation are parametrised using a stationary velocity field

@@ -18,66 +18,66 @@ Module/executable for global registration (rigid and/or affine) based on a block
 :Category: Registration.NiftyReg
 
 :type: **ShellOperator**
-:template: ``reg_aladin --smooR={smoothReferenceWidth} --smooF={smoothFloatingWidth} --refLowThr={referenceLowerThreshold} --refUpThr={referenceUpperThreshold} --floLowThr={floatingLowerThreshold} --floUpThr={floatingUpperThreshold} --ln={levelPyramidNumber} --lp={levelToPerformNumber} --maxit={iterationNumber} --pv={blockPercentage} --pi={inlierPercentage} --noSym={noSym} --rigOnly={rigidOnly} --affDirect={affineOnly} --nac={useHeaderOrigin} --iso={makeIsotropic} --interp={interpolation}  --aff={outputAffineFileName} --res={outputWarpedImageName}  --ref={referenceImageName} --flo={floatingImageName} --rmask={referenceMaskImageName} --fmask={floatingMaskImageName} --inaff={inputAffineName} ``
+:template: ``reg_aladin {{toutputWarpedImageName|option('res')}} {{toutputAffineFileName|option('aff')}} {{smoothReferenceWidth|option('smooR')}} {{smoothFloatingWidth|option('smooF')}} {{referenceLowerThreshold|option('refLowThr')}} {{referenceUpperThreshold|option('refUpThr')}} {{floatingLowerThreshold|option('floLowThr')}} {{floatingUpperThreshold|option('floUpThr')}} {{levelPyramidNumber|option('ln')}} {{levelToPerformNumber|option('lp')}} {{iterationNumber|option('maxit')}} {{blockPercentage|option('pv')}} {{inlierPercentage|option('pi')}} {{noSym|flag('noSym')}} {{rigidOnly|flag('rigOnly')}} {{affineOnly|flag('affDirect')}} {{useHeaderOrigin|flag('nac')}} {{makeIsotropic|flag('iso')}} {{interpolation|option('interp')}}  {{referenceImageName|option('ref')}} {{floatingImageName|option('flo')}} {{referenceMaskImageName|option('rmask')}} {{floatingMaskImageName|option('fmask')}} {{inputAffineName|option('inaff')}}``
 
 
 :Inputs:
     
-        * **referenceImageName** : Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG/
+        * **referenceImageName** : PNG/
 
-          :default: required
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: input
-          :cli_flag: --ref
+          :cli_flag: {{referenceImageName|option('ref')}}
           Reference image
           
           Reference image filename (also called Target or Fixed)
 
     
-        * **floatingImageName** : Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG/
+        * **floatingImageName** : PNG/
 
-          :default: required
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: input
-          :cli_flag: --flo
+          :cli_flag: {{floatingImageName|option('flo')}}
           Floating image
           
           Floating image filename (also called Source or moving)
 
     
-        * **referenceMaskImageName** : Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG/
+        * **referenceMaskImageName** : PNG/
 
-          :default: None
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: input
-          :cli_flag: --rmask
+          :cli_flag: {{referenceMaskImageName|option('rmask')}}
           Ref. mask
           
           Filename of a mask image in the reference space
 
     
-        * **floatingMaskImageName** : Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG/
+        * **floatingMaskImageName** : PNG/
 
-          :default: None
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: input
-          :cli_flag: --fmask
+          :cli_flag: {{floatingMaskImageName|option('fmask')}}
           Flo. mask
           
           Filename of a mask image in the floating space. Only used when symmetric turned on
 
     
-        * **inputAffineName** : ['TXT', 'MAT']/
+        * **inputAffineName** : txt/
 
-          :default: None
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: input
-          :cli_flag: --inaff
+          :cli_flag: {{inputAffineName|option('inaff')}}
           Input affine trans. from NiftyReg
           
           Affine registration matrix stored as a text file
@@ -87,25 +87,25 @@ Module/executable for global registration (rigid and/or affine) based on a block
 
 :Output:
     
-        * **outputAffineFileName** : ['TXT', 'MAT']/
+        * **outputAffineFileName** : txt/
 
-          :default: outputAffineResult.txt
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: output
-          :cli_flag: --aff
+          :cli_flag: {{outputAffineFileName|option('aff')}}
           Output affine filename
           
           Affine registration matrix output, saved as a text file
 
     
-        * **outputWarpedImageName** : Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG/
+        * **outputWarpedImageName** : PNG/
 
-          :default: outputAffineResult.nii
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: output
-          :cli_flag: --res
+          :cli_flag: {{outputWarpedImageName|option('res')}}
           Output warped image
           
           Warped floating image
@@ -115,13 +115,37 @@ Module/executable for global registration (rigid and/or affine) based on a block
 
 :Parameter:
     
+        * **toutputWarpedImageName** : str/
+
+          :default: 
+          :target: True
+          :index: 
+          :channel: output
+          :cli_flag: {{toutputWarpedImageName|option('res')}}
+          Output warped image
+          
+          Warped floating image
+
+    
+        * **toutputAffineFileName** : str/
+
+          :default: 
+          :target: True
+          :index: 
+          :channel: output
+          :cli_flag: {{toutputAffineFileName|option('aff')}}
+          Output affine filename
+          
+          Affine registration matrix output, saved as a text file
+
+    
         * **smoothReferenceWidth** : float/
 
-          :default: 0
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: None
-          :cli_flag: --smooR
+          :cli_flag: {{smoothReferenceWidth|option('smooR')}}
           Ref .Smooth
           
           Standard deviation in mm (voxel if negative) of the Gaussian kernel used to smooth the reference image
@@ -130,11 +154,11 @@ Module/executable for global registration (rigid and/or affine) based on a block
     
         * **smoothFloatingWidth** : float/
 
-          :default: 0
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: None
-          :cli_flag: --smooF
+          :cli_flag: {{smoothFloatingWidth|option('smooF')}}
           Flo. smooth
           
           Standard deviation in mm (voxel if negative) of the Gaussian kernel used to smooth the Floating image
@@ -143,11 +167,11 @@ Module/executable for global registration (rigid and/or affine) based on a block
     
         * **referenceLowerThreshold** : float/
 
-          :default: 0
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: None
-          :cli_flag: --refLowThr
+          :cli_flag: {{referenceLowerThreshold|option('refLowThr')}}
           Ref. Low Thr.
           
           Lower threshold value applied to the reference image
@@ -156,11 +180,11 @@ Module/executable for global registration (rigid and/or affine) based on a block
     
         * **referenceUpperThreshold** : float/
 
-          :default: 0
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: None
-          :cli_flag: --refUpThr
+          :cli_flag: {{referenceUpperThreshold|option('refUpThr')}}
           Ref. Up Thr.
           
           Upper threshold value applied to the reference image
@@ -169,11 +193,11 @@ Module/executable for global registration (rigid and/or affine) based on a block
     
         * **floatingLowerThreshold** : float/
 
-          :default: 0
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: None
-          :cli_flag: --floLowThr
+          :cli_flag: {{floatingLowerThreshold|option('floLowThr')}}
           Flo. Low Thr.
           
           Lower threshold value applied to the floating image
@@ -182,11 +206,11 @@ Module/executable for global registration (rigid and/or affine) based on a block
     
         * **floatingUpperThreshold** : float/
 
-          :default: 0
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: None
-          :cli_flag: --floUpThr
+          :cli_flag: {{floatingUpperThreshold|option('floUpThr')}}
           Flo. Up Thr.
           
           Upper threshold value applied to the floating image
@@ -195,11 +219,11 @@ Module/executable for global registration (rigid and/or affine) based on a block
     
         * **levelPyramidNumber** : int/
 
-          :default: 3
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: None
-          :cli_flag: --ln
+          :cli_flag: {{levelPyramidNumber|option('ln')}}
           Level number
           
           Number of levels to use to generate the pyramids for the coarse-to-fine approach
@@ -207,11 +231,11 @@ Module/executable for global registration (rigid and/or affine) based on a block
     
         * **levelToPerformNumber** : int/
 
-          :default: 3
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: None
-          :cli_flag: --lp
+          :cli_flag: {{levelToPerformNumber|option('lp')}}
           Level to perform
           
           Number of levels to use to run the registration once the pyramids have been created
@@ -219,11 +243,11 @@ Module/executable for global registration (rigid and/or affine) based on a block
     
         * **iterationNumber** : int/
 
-          :default: 5
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: None
-          :cli_flag: --maxit
+          :cli_flag: {{iterationNumber|option('maxit')}}
           Iteration number
           
           Maximal number of iterations of the trimmed least square approach to perform per level
@@ -231,11 +255,11 @@ Module/executable for global registration (rigid and/or affine) based on a block
     
         * **blockPercentage** : float/
 
-          :default: 50
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: None
-          :cli_flag: --pv
+          :cli_flag: {{blockPercentage|option('pv')}}
           Percentage block
           
           Percentage of blocks to use in the optimisation scheme
@@ -244,11 +268,11 @@ Module/executable for global registration (rigid and/or affine) based on a block
     
         * **inlierPercentage** : float/
 
-          :default: 50
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: None
-          :cli_flag: --pi
+          :cli_flag: {{inlierPercentage|option('pi')}}
           Percentage inlier
           
           Percentage of blocks to consider as inlier in the optimisation scheme
@@ -257,11 +281,11 @@ Module/executable for global registration (rigid and/or affine) based on a block
     
         * **noSym** : bool/
 
-          :default: false
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: None
-          :cli_flag: --noSym
+          :cli_flag: {{noSym|flag('noSym')}}
           Disable symmetry
           
           The symmetric version of the algorithm is used by default. Use this flag to disable it
@@ -269,11 +293,11 @@ Module/executable for global registration (rigid and/or affine) based on a block
     
         * **rigidOnly** : bool/
 
-          :default: false
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: None
-          :cli_flag: --rigOnly
+          :cli_flag: {{rigidOnly|flag('rigOnly')}}
           Rigid only
           
           Performs only a rigid registration, rigid then affine by default
@@ -281,11 +305,11 @@ Module/executable for global registration (rigid and/or affine) based on a block
     
         * **affineOnly** : bool/
 
-          :default: false
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: None
-          :cli_flag: --affDirect
+          :cli_flag: {{affineOnly|flag('affDirect')}}
           Affine only
           
           Performs only an affine registration, rigid then affine by default
@@ -293,11 +317,11 @@ Module/executable for global registration (rigid and/or affine) based on a block
     
         * **useHeaderOrigin** : bool/
 
-          :default: false
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: None
-          :cli_flag: --nac
+          :cli_flag: {{useHeaderOrigin|flag('nac')}}
           Use header
           
           Use the nifti header origin to initialise the transformation. Image centres are used by default
@@ -305,11 +329,11 @@ Module/executable for global registration (rigid and/or affine) based on a block
     
         * **makeIsotropic** : bool/
 
-          :default: false
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: None
-          :cli_flag: --iso
+          :cli_flag: {{makeIsotropic|flag('iso')}}
           Make images isotropic
           
           Make floating and reference images isotropic if required
@@ -317,11 +341,11 @@ Module/executable for global registration (rigid and/or affine) based on a block
     
         * **interpolation** : vector.int/
 
-          :default: 1
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: None
-          :cli_flag: --interp
+          :cli_flag: {{interpolation|option('interp')}}
           Interpolation order
           
           Interpolation order to use internally to warp the floating image

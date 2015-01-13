@@ -18,30 +18,30 @@ NiftyReg module to create Jacobian-based images
 :Category: Registration.NiftyReg
 
 :type: **ShellOperator**
-:template: ``reg_jacobian  --jac={jacDetImage} --jacL={logJacDetImage} --jacM={JacMatImage}  --trans={InTrans} --ref={referenceImageName} ``
+:template: ``reg_jacobian {{tJacMatImage|option('jacM')}} {{tlogJacDetImage|option('jacL')}} {{tjacDetImage|option('jac')}}  {{InTrans|option('trans')}} {{referenceImageName|option('ref')}}``
 
 
 :Inputs:
     
-        * **InTrans** : ['NII', 'NII.GZ', 'NRRD', 'TXT', 'MAT']/
+        * **InTrans** : TXT/
 
-          :default: required
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: input
-          :cli_flag: --trans
+          :cli_flag: {{InTrans|option('trans')}}
           Input Trans.
           
           Input transformation
 
     
-        * **referenceImageName** : Image.NII,Image.NII..GZ,Image.NRRD,Image.PNG/
+        * **referenceImageName** : PNG/
 
-          :default: required
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: input
-          :cli_flag: --ref
+          :cli_flag: {{referenceImageName|option('ref')}}
           Reference image
           
           Reference image filename, required if the transformation is a spline parametrisation
@@ -51,37 +51,37 @@ NiftyReg module to create Jacobian-based images
 
 :Output:
     
-        * **jacDetImage** : Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG/
+        * **jacDetImage** : PNG/
 
-          :default: jacDetImage.nii
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: output
-          :cli_flag: --jac
+          :cli_flag: {{jacDetImage|option('jac')}}
           Jac. det. image
           
           Jacobian determinant image
 
     
-        * **logJacDetImage** : Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG/
+        * **logJacDetImage** : PNG/
 
-          :default: logJacDetImage.nii
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: output
-          :cli_flag: --jacL
+          :cli_flag: {{logJacDetImage|option('jacL')}}
           Log. Jac. det. image
           
           Log of the Jacobian determinant image
 
     
-        * **JacMatImage** : Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG/
+        * **JacMatImage** : PNG/
 
-          :default: JacMatImage.nii
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: output
-          :cli_flag: --jacM
+          :cli_flag: {{JacMatImage|option('jacM')}}
           Jac. mat. image
           
           Jacobian matrix image
@@ -90,4 +90,40 @@ NiftyReg module to create Jacobian-based images
 
 
 :Parameter:
+    
+        * **tJacMatImage** : str/
+
+          :default: 
+          :target: True
+          :index: 
+          :channel: output
+          :cli_flag: {{tJacMatImage|option('jacM')}}
+          Jac. mat. image
+          
+          Jacobian matrix image
+
+    
+        * **tlogJacDetImage** : str/
+
+          :default: 
+          :target: True
+          :index: 
+          :channel: output
+          :cli_flag: {{tlogJacDetImage|option('jacL')}}
+          Log. Jac. det. image
+          
+          Log of the Jacobian determinant image
+
+    
+        * **tjacDetImage** : str/
+
+          :default: 
+          :target: True
+          :index: 
+          :channel: output
+          :cli_flag: {{tjacDetImage|option('jac')}}
+          Jac. det. image
+          
+          Jacobian determinant image
+
     

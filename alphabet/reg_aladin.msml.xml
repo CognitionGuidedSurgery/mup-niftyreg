@@ -21,48 +21,63 @@
 
 
     <runtime>
-        <sh template="reg_aladin --smooR={smoothReferenceWidth} --smooF={smoothFloatingWidth} --refLowThr={referenceLowerThreshold} --refUpThr={referenceUpperThreshold} --floLowThr={floatingLowerThreshold} --floUpThr={floatingUpperThreshold} --ln={levelPyramidNumber} --lp={levelToPerformNumber} --maxit={iterationNumber} --pv={blockPercentage} --pi={inlierPercentage} --noSym={noSym} --rigOnly={rigidOnly} --affDirect={affineOnly} --nac={useHeaderOrigin} --iso={makeIsotropic} --interp={interpolation}  --aff={outputAffineFileName} --res={outputWarpedImageName}  --ref={referenceImageName} --flo={floatingImageName} --rmask={referenceMaskImageName} --fmask={floatingMaskImageName} --inaff={inputAffineName} "/>
+        <sh template="reg_aladin {{toutputWarpedImageName|option('res')}} {{toutputAffineFileName|option('aff')}} {{smoothReferenceWidth|option('smooR')}} {{smoothFloatingWidth|option('smooF')}} {{referenceLowerThreshold|option('refLowThr')}} {{referenceUpperThreshold|option('refUpThr')}} {{floatingLowerThreshold|option('floLowThr')}} {{floatingUpperThreshold|option('floUpThr')}} {{levelPyramidNumber|option('ln')}} {{levelToPerformNumber|option('lp')}} {{iterationNumber|option('maxit')}} {{blockPercentage|option('pv')}} {{inlierPercentage|option('pi')}} {{noSym|flag('noSym')}} {{rigidOnly|flag('rigOnly')}} {{affineOnly|flag('affDirect')}} {{useHeaderOrigin|flag('nac')}} {{makeIsotropic|flag('iso')}} {{interpolation|option('interp')}}  {{referenceImageName|option('ref')}} {{floatingImageName|option('flo')}} {{referenceMaskImageName|option('rmask')}} {{floatingMaskImageName|option('fmask')}} {{inputAffineName|option('inaff')}}"/>
     </runtime>
 
     <input>
     
-        <arg name="referenceImageName"  physical="Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG" default="required"  >
+        <arg name="referenceImageName" 
+             physical="PNG"
+             
+             >
             <meta key="doc">
-                Reference image
+            <![CDATA[Reference image
                     
-                    Reference image filename (also called Target or Fixed)
+                    Reference image filename (also called Target or Fixed)]]>
             </meta>
         </arg>
 
-        <arg name="floatingImageName"  physical="Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG" default="required"  >
+        <arg name="floatingImageName" 
+             physical="PNG"
+             
+             >
             <meta key="doc">
-                Floating image
+            <![CDATA[Floating image
                     
-                    Floating image filename (also called Source or moving)
+                    Floating image filename (also called Source or moving)]]>
             </meta>
         </arg>
 
-        <arg name="referenceMaskImageName"  physical="Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG"   >
+        <arg name="referenceMaskImageName" 
+             physical="PNG"
+             
+             >
             <meta key="doc">
-                Ref. mask
+            <![CDATA[Ref. mask
                     
-                    Filename of a mask image in the reference space
+                    Filename of a mask image in the reference space]]>
             </meta>
         </arg>
 
-        <arg name="floatingMaskImageName"  physical="Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG"   >
+        <arg name="floatingMaskImageName" 
+             physical="PNG"
+             
+             >
             <meta key="doc">
-                Flo. mask
+            <![CDATA[Flo. mask
                     
-                    Filename of a mask image in the floating space. Only used when symmetric turned on
+                    Filename of a mask image in the floating space. Only used when symmetric turned on]]>
             </meta>
         </arg>
 
-        <arg name="inputAffineName"  physical="['TXT', 'MAT']"   >
+        <arg name="inputAffineName" 
+             physical="txt"
+             
+             >
             <meta key="doc">
-                Input affine trans. from NiftyReg
+            <![CDATA[Input affine trans. from NiftyReg
                     
-                    Affine registration matrix stored as a text file
+                    Affine registration matrix stored as a text file]]>
             </meta>
         </arg>
 
@@ -70,19 +85,25 @@
 
     <output>
     
-        <arg name="outputAffineFileName"  physical="['TXT', 'MAT']" default="outputAffineResult.txt"  >
+        <arg name="outputAffineFileName" 
+             physical="txt"
+             
+             >
             <meta key="doc">
-                Output affine filename
+            <![CDATA[Output affine filename
                     
-                    Affine registration matrix output, saved as a text file
+                    Affine registration matrix output, saved as a text file]]>
             </meta>
         </arg>
 
-        <arg name="outputWarpedImageName"  physical="Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG" default="outputAffineResult.nii"  >
+        <arg name="outputWarpedImageName" 
+             physical="PNG"
+             
+             >
             <meta key="doc">
-                Output warped image
+            <![CDATA[Output warped image
                     
-                    Warped floating image
+                    Warped floating image]]>
             </meta>
         </arg>
 
@@ -90,148 +111,221 @@
 
     <parameters>
     
-        <arg name="smoothReferenceWidth"  physical="float" default="0"  >
+        <arg name="toutputWarpedImageName" 
+             physical="str"
+             
+             target="true">
             <meta key="doc">
-                Ref .Smooth
+            <![CDATA[Output warped image
+                    
+                    Warped floating image]]>
+            </meta>
+        </arg>
+
+        <arg name="toutputAffineFileName" 
+             physical="str"
+             
+             target="true">
+            <meta key="doc">
+            <![CDATA[Output affine filename
+                    
+                    Affine registration matrix output, saved as a text file]]>
+            </meta>
+        </arg>
+
+        <arg name="smoothReferenceWidth" 
+             physical="float"
+             
+             >
+            <meta key="doc">
+            <![CDATA[Ref .Smooth
                     
                     Standard deviation in mm (voxel if negative) of the Gaussian kernel used to smooth the reference image
-                    :Possible Values: []
+                    :Possible Values: []]]>
             </meta>
         </arg>
 
-        <arg name="smoothFloatingWidth"  physical="float" default="0"  >
+        <arg name="smoothFloatingWidth" 
+             physical="float"
+             
+             >
             <meta key="doc">
-                Flo. smooth
+            <![CDATA[Flo. smooth
                     
                     Standard deviation in mm (voxel if negative) of the Gaussian kernel used to smooth the Floating image
-                    :Possible Values: []
+                    :Possible Values: []]]>
             </meta>
         </arg>
 
-        <arg name="referenceLowerThreshold"  physical="float" default="0"  >
+        <arg name="referenceLowerThreshold" 
+             physical="float"
+             
+             >
             <meta key="doc">
-                Ref. Low Thr.
+            <![CDATA[Ref. Low Thr.
                     
                     Lower threshold value applied to the reference image
-                    :Possible Values: []
+                    :Possible Values: []]]>
             </meta>
         </arg>
 
-        <arg name="referenceUpperThreshold"  physical="float" default="0"  >
+        <arg name="referenceUpperThreshold" 
+             physical="float"
+             
+             >
             <meta key="doc">
-                Ref. Up Thr.
+            <![CDATA[Ref. Up Thr.
                     
                     Upper threshold value applied to the reference image
-                    :Possible Values: []
+                    :Possible Values: []]]>
             </meta>
         </arg>
 
-        <arg name="floatingLowerThreshold"  physical="float" default="0"  >
+        <arg name="floatingLowerThreshold" 
+             physical="float"
+             
+             >
             <meta key="doc">
-                Flo. Low Thr.
+            <![CDATA[Flo. Low Thr.
                     
                     Lower threshold value applied to the floating image
-                    :Possible Values: []
+                    :Possible Values: []]]>
             </meta>
         </arg>
 
-        <arg name="floatingUpperThreshold"  physical="float" default="0"  >
+        <arg name="floatingUpperThreshold" 
+             physical="float"
+             
+             >
             <meta key="doc">
-                Flo. Up Thr.
+            <![CDATA[Flo. Up Thr.
                     
                     Upper threshold value applied to the floating image
-                    :Possible Values: []
+                    :Possible Values: []]]>
             </meta>
         </arg>
 
-        <arg name="levelPyramidNumber"  physical="int" default="3"  >
+        <arg name="levelPyramidNumber" 
+             physical="int"
+             
+             >
             <meta key="doc">
-                Level number
+            <![CDATA[Level number
                     
-                    Number of levels to use to generate the pyramids for the coarse-to-fine approach
+                    Number of levels to use to generate the pyramids for the coarse-to-fine approach]]>
             </meta>
         </arg>
 
-        <arg name="levelToPerformNumber"  physical="int" default="3"  >
+        <arg name="levelToPerformNumber" 
+             physical="int"
+             
+             >
             <meta key="doc">
-                Level to perform
+            <![CDATA[Level to perform
                     
-                    Number of levels to use to run the registration once the pyramids have been created
+                    Number of levels to use to run the registration once the pyramids have been created]]>
             </meta>
         </arg>
 
-        <arg name="iterationNumber"  physical="int" default="5"  >
+        <arg name="iterationNumber" 
+             physical="int"
+             
+             >
             <meta key="doc">
-                Iteration number
+            <![CDATA[Iteration number
                     
-                    Maximal number of iterations of the trimmed least square approach to perform per level
+                    Maximal number of iterations of the trimmed least square approach to perform per level]]>
             </meta>
         </arg>
 
-        <arg name="blockPercentage"  physical="float" default="50"  >
+        <arg name="blockPercentage" 
+             physical="float"
+             
+             >
             <meta key="doc">
-                Percentage block
+            <![CDATA[Percentage block
                     
                     Percentage of blocks to use in the optimisation scheme
-                    :Possible Values: []
+                    :Possible Values: []]]>
             </meta>
         </arg>
 
-        <arg name="inlierPercentage"  physical="float" default="50"  >
+        <arg name="inlierPercentage" 
+             physical="float"
+             
+             >
             <meta key="doc">
-                Percentage inlier
+            <![CDATA[Percentage inlier
                     
                     Percentage of blocks to consider as inlier in the optimisation scheme
-                    :Possible Values: []
+                    :Possible Values: []]]>
             </meta>
         </arg>
 
-        <arg name="noSym"  physical="bool" default="false"  >
+        <arg name="noSym" 
+             physical="bool"
+             
+             >
             <meta key="doc">
-                Disable symmetry
+            <![CDATA[Disable symmetry
                     
-                    The symmetric version of the algorithm is used by default. Use this flag to disable it
+                    The symmetric version of the algorithm is used by default. Use this flag to disable it]]>
             </meta>
         </arg>
 
-        <arg name="rigidOnly"  physical="bool" default="false"  >
+        <arg name="rigidOnly" 
+             physical="bool"
+             
+             >
             <meta key="doc">
-                Rigid only
+            <![CDATA[Rigid only
                     
-                    Performs only a rigid registration, rigid then affine by default
+                    Performs only a rigid registration, rigid then affine by default]]>
             </meta>
         </arg>
 
-        <arg name="affineOnly"  physical="bool" default="false"  >
+        <arg name="affineOnly" 
+             physical="bool"
+             
+             >
             <meta key="doc">
-                Affine only
+            <![CDATA[Affine only
                     
-                    Performs only an affine registration, rigid then affine by default
+                    Performs only an affine registration, rigid then affine by default]]>
             </meta>
         </arg>
 
-        <arg name="useHeaderOrigin"  physical="bool" default="false"  >
+        <arg name="useHeaderOrigin" 
+             physical="bool"
+             
+             >
             <meta key="doc">
-                Use header
+            <![CDATA[Use header
                     
-                    Use the nifti header origin to initialise the transformation. Image centres are used by default
+                    Use the nifti header origin to initialise the transformation. Image centres are used by default]]>
             </meta>
         </arg>
 
-        <arg name="makeIsotropic"  physical="bool" default="false"  >
+        <arg name="makeIsotropic" 
+             physical="bool"
+             
+             >
             <meta key="doc">
-                Make images isotropic
+            <![CDATA[Make images isotropic
                     
-                    Make floating and reference images isotropic if required
+                    Make floating and reference images isotropic if required]]>
             </meta>
         </arg>
 
-        <arg name="interpolation"  physical="vector.int" default="1"  >
+        <arg name="interpolation" 
+             physical="vector.int"
+             
+             >
             <meta key="doc">
-                Interpolation order
+            <![CDATA[Interpolation order
                     
                     Interpolation order to use internally to warp the floating image
-                    :Possible Values: ['0', '1', '3']
+                    :Possible Values: ['0', '1', '3']]]>
             </meta>
         </arg>
 

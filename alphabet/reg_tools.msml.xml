@@ -21,64 +21,85 @@
 
 
     <runtime>
-        <sh template="reg_tools --float={convertToFloat} --down={downSample} --bin={binarize} --iso={isotropic} --add={addConst} --sub={subConst} --mul={mulConst} --div={divConst} --smo={smooth} --smoG={smooth} --thr={threshold}   --in={inputImageName} --rms={rmsImages} --nan={maskImage} --add={addImage} --sub={subtractImage} --mul={multiplyImage} --div={divideImage} "/>
+        <sh template="reg_tools {{convertToFloat|flag('float')}} {{downSample|flag('down')}} {{binarize|flag('bin')}} {{isotropic|flag('iso')}} {{addConst|option('add')}} {{subConst|option('sub')}} {{mulConst|option('mul')}} {{divConst|option('div')}} {{smooth|option('smo')}} {{smooth|option('smoG')}} {{threshold|option('thr')}}  {{inputImageName|option('in')}} {{rmsImages|option('rms')}} {{maskImage|option('nan')}} {{addImage|option('add')}} {{subtractImage|option('sub')}} {{multiplyImage|option('mul')}} {{divideImage|option('div')}}"/>
     </runtime>
 
     <input>
     
-        <arg name="inputImageName"  physical="Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG" default="required"  >
+        <arg name="inputImageName" 
+             physical="PNG"
+             
+             >
             <meta key="doc">
-                Input image
+            <![CDATA[Input image
                     
-                    Input image filename
+                    Input image filename]]>
             </meta>
         </arg>
 
-        <arg name="rmsImages"  physical="Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG"   >
+        <arg name="rmsImages" 
+             physical="PNG"
+             
+             >
             <meta key="doc">
-                Compute RMS 
+            <![CDATA[Compute RMS 
                     
-                    Compute the mean rms between this image and the input image
+                    Compute the mean rms between this image and the input image]]>
             </meta>
         </arg>
 
-        <arg name="maskImage"  physical="Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG"   >
+        <arg name="maskImage" 
+             physical="PNG"
+             
+             >
             <meta key="doc">
-                Mask Image
+            <![CDATA[Mask Image
                     
-                    This image is used to mask the input image. Voxels outside of the mask are set to nan
+                    This image is used to mask the input image. Voxels outside of the mask are set to nan]]>
             </meta>
         </arg>
 
-        <arg name="addImage"  physical="Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG"   >
+        <arg name="addImage" 
+             physical="PNG"
+             
+             >
             <meta key="doc">
-                Add Images
+            <![CDATA[Add Images
                     
-                    This image is added to the input image
+                    This image is added to the input image]]>
             </meta>
         </arg>
 
-        <arg name="subtractImage"  physical="Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG"   >
+        <arg name="subtractImage" 
+             physical="PNG"
+             
+             >
             <meta key="doc">
-                Subtract Images
+            <![CDATA[Subtract Images
                     
-                    This image is subtracted from the input image
+                    This image is subtracted from the input image]]>
             </meta>
         </arg>
 
-        <arg name="multiplyImage"  physical="Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG"   >
+        <arg name="multiplyImage" 
+             physical="PNG"
+             
+             >
             <meta key="doc">
-                Multiply Images
+            <![CDATA[Multiply Images
                     
-                    This image is multiplied with input image
+                    This image is multiplied with input image]]>
             </meta>
         </arg>
 
-        <arg name="divideImage"  physical="Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG"   >
+        <arg name="divideImage" 
+             physical="PNG"
+             
+             >
             <meta key="doc">
-                Divide Input Image
+            <![CDATA[Divide Input Image
                     
-                    The input image is divided by this image
+                    The input image is divided by this image]]>
             </meta>
         </arg>
 
@@ -90,97 +111,130 @@
 
     <parameters>
     
-        <arg name="convertToFloat"  physical="bool"   >
+        <arg name="convertToFloat" 
+             physical="bool"
+             
+             >
             <meta key="doc">
-                Convert to float
+            <![CDATA[Convert to float
                     
-                    The input image is converted to float
+                    The input image is converted to float]]>
             </meta>
         </arg>
 
-        <arg name="downSample"  physical="bool"   >
+        <arg name="downSample" 
+             physical="bool"
+             
+             >
             <meta key="doc">
-                Downsample
+            <![CDATA[Downsample
                     
-                    The input image is downsampled 2 times
+                    The input image is downsampled 2 times]]>
             </meta>
         </arg>
 
-        <arg name="binarize"  physical="bool"   >
+        <arg name="binarize" 
+             physical="bool"
+             
+             >
             <meta key="doc">
-                Binarize
+            <![CDATA[Binarize
                     
-                    Binarise the input image (val!=0?val=1:val=0) 
+                    Binarise the input image (val!=0?val=1:val=0) ]]>
             </meta>
         </arg>
 
-        <arg name="isotropic"  physical="bool"   >
+        <arg name="isotropic" 
+             physical="bool"
+             
+             >
             <meta key="doc">
-                Make Isotropic
+            <![CDATA[Make Isotropic
                     
-                    The resulting image is made isotropic
+                    The resulting image is made isotropic]]>
             </meta>
         </arg>
 
-        <arg name="addConst"  physical="float" default="none"  >
+        <arg name="addConst" 
+             physical="float"
+             
+             >
             <meta key="doc">
-                Add
+            <![CDATA[Add
                     
                     Add the constant value to the input image
-                    :Possible Values: []
+                    :Possible Values: []]]>
             </meta>
         </arg>
 
-        <arg name="subConst"  physical="float" default="none"  >
+        <arg name="subConst" 
+             physical="float"
+             
+             >
             <meta key="doc">
-                Subtract
+            <![CDATA[Subtract
                     
                     Subtract the constant value from the input image
-                    :Possible Values: []
+                    :Possible Values: []]]>
             </meta>
         </arg>
 
-        <arg name="mulConst"  physical="float" default="none"  >
+        <arg name="mulConst" 
+             physical="float"
+             
+             >
             <meta key="doc">
-                Multiply
+            <![CDATA[Multiply
                     
                     Multiply the input image with the constant value
-                    :Possible Values: []
+                    :Possible Values: []]]>
             </meta>
         </arg>
 
-        <arg name="divConst"  physical="float" default="none"  >
+        <arg name="divConst" 
+             physical="float"
+             
+             >
             <meta key="doc">
-                Divide
+            <![CDATA[Divide
                     
                     Divide the input image with the constant value
-                    :Possible Values: []
+                    :Possible Values: []]]>
             </meta>
         </arg>
 
-        <arg name="smooth"  physical="float" default="none"  >
+        <arg name="smooth" 
+             physical="float"
+             
+             >
             <meta key="doc">
-                Smooth (B-Spline)
+            <![CDATA[Smooth (B-Spline)
                     
                     The input image is smoothed using a cubic b-spline kernel
-                    :Possible Values: []
+                    :Possible Values: []]]>
             </meta>
         </arg>
 
-        <arg name="smooth"  physical="float.vector" default="none"  >
+        <arg name="smooth" 
+             physical="vector.float"
+             
+             >
             <meta key="doc">
-                Smooth (Gaussian)
+            <![CDATA[Smooth (Gaussian)
                     
-                    The input image is smoothed using Gaussian kernel
+                    The input image is smoothed using Gaussian kernel]]>
             </meta>
         </arg>
 
-        <arg name="threshold"  physical="float"   >
+        <arg name="threshold" 
+             physical="float"
+             
+             >
             <meta key="doc">
-                Threshold image
+            <![CDATA[Threshold image
                     
                     Threshold the input image (val<thr?val=0:val=1) 
-                    :Possible Values: []
+                    :Possible Values: []]]>
             </meta>
         </arg>
 

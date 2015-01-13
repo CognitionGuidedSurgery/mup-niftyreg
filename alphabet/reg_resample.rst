@@ -18,42 +18,42 @@ NiftyReg module for resampling using input transformation
 :Category: Registration.NiftyReg
 
 :type: **ShellOperator**
-:template: ``reg_resample --inter={interpolation} --pad={paddingValue}  --res={warpedImage} --blank={warpedGrid}  --ref={referenceImageName} --flo={floatingImageName} --trans={inputTransformation} ``
+:template: ``reg_resample {{twarpedGrid|option('blank')}} {{twarpedImage|option('res')}} {{interpolation|option('inter')}} {{paddingValue|option('pad')}}  {{referenceImageName|option('ref')}} {{floatingImageName|option('flo')}} {{inputTransformation|option('trans')}}``
 
 
 :Inputs:
     
-        * **referenceImageName** : Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG/
+        * **referenceImageName** : PNG/
 
-          :default: required
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: input
-          :cli_flag: --ref
+          :cli_flag: {{referenceImageName|option('ref')}}
           Reference image
           
           Reference image filename (also called Target of Fixed)
 
     
-        * **floatingImageName** : Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG/
+        * **floatingImageName** : PNG/
 
-          :default: required
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: input
-          :cli_flag: --flo
+          :cli_flag: {{floatingImageName|option('flo')}}
           Floating image
           
           Floating image filename (also called Source of moving)
 
     
-        * **inputTransformation** : ['TXT', 'MAT', 'NII', 'NII.GZ', 'NRRD']/
+        * **inputTransformation** : TXT/
 
-          :default: None
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: input
-          :cli_flag: --trans
+          :cli_flag: {{inputTransformation|option('trans')}}
           Input trans.
           
           Input transformation
@@ -63,25 +63,25 @@ NiftyReg module for resampling using input transformation
 
 :Output:
     
-        * **warpedImage** : Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG/
+        * **warpedImage** : PNG/
 
-          :default: warpedImage.nii
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: output
-          :cli_flag: --res
+          :cli_flag: {{warpedImage|option('res')}}
           Warped image
           
           Warped floating image
 
     
-        * **warpedGrid** : Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG/
+        * **warpedGrid** : PNG/
 
-          :default: warpedGrid.nii
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: output
-          :cli_flag: --blank
+          :cli_flag: {{warpedGrid|option('blank')}}
           Grid image
           
           Warped blank grid image
@@ -91,13 +91,37 @@ NiftyReg module for resampling using input transformation
 
 :Parameter:
     
+        * **twarpedGrid** : str/
+
+          :default: 
+          :target: True
+          :index: 
+          :channel: output
+          :cli_flag: {{twarpedGrid|option('blank')}}
+          Grid image
+          
+          Warped blank grid image
+
+    
+        * **twarpedImage** : str/
+
+          :default: 
+          :target: True
+          :index: 
+          :channel: output
+          :cli_flag: {{twarpedImage|option('res')}}
+          Warped image
+          
+          Warped floating image
+
+    
         * **interpolation** : vector.int/
 
-          :default: 3
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: None
-          :cli_flag: --inter
+          :cli_flag: {{interpolation|option('inter')}}
           Interpolation order
           
           Interpolation order to use to warp the floating image
@@ -106,11 +130,11 @@ NiftyReg module for resampling using input transformation
     
         * **paddingValue** : float/
 
-          :default: 0
-          :target: None
+          :default: 
+          :target: 
           :index: None
           :channel: None
-          :cli_flag: --pad
+          :cli_flag: {{paddingValue|option('pad')}}
           Padding value
           
           Padding value

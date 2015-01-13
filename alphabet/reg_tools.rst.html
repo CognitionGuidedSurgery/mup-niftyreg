@@ -358,28 +358,24 @@ ul.auto-toc {
 <tr class="field"><th class="field-name">type:</th><td class="field-body"><p class="first"><strong>ShellOperator</strong></p>
 </td>
 </tr>
-<tr class="field"><th class="field-name">template:</th><td class="field-body"><p class="first"><a href="#id1"><span class="problematic" id="id2">``</span></a>reg_tools --float={convertToFloat} --down={downSample} --bin={binarize} --iso={isotropic} --add={addConst} --sub={subConst} --mul={mulConst} --div={divConst} --smo={smooth} --smoG={smooth} --thr={threshold}   --in={inputImageName} --rms={rmsImages} --nan={maskImage} --add={addImage} --sub={subtractImage} --mul={multiplyImage} --div={divideImage} ``</p>
-<div class="system-message" id="id1">
-<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">reg_tools.rst</tt>, line 21); <em><a href="#id2">backlink</a></em></p>
-<p>Inline literal start-string without end-string.</p>
-</div>
+<tr class="field"><th class="field-name">template:</th><td class="field-body"><p class="first"><tt class="docutils literal">reg_tools <span class="pre">{{convertToFloat|flag('float')}}</span> <span class="pre">{{downSample|flag('down')}}</span> <span class="pre">{{binarize|flag('bin')}}</span> <span class="pre">{{isotropic|flag('iso')}}</span> <span class="pre">{{addConst|option('add')}}</span> <span class="pre">{{subConst|option('sub')}}</span> <span class="pre">{{mulConst|option('mul')}}</span> <span class="pre">{{divConst|option('div')}}</span> <span class="pre">{{smooth|option('smo')}}</span> <span class="pre">{{smooth|option('smoG')}}</span> <span class="pre">{{threshold|option('thr')}}</span>&nbsp; <span class="pre">{{inputImageName|option('in')}}</span> <span class="pre">{{rmsImages|option('rms')}}</span> <span class="pre">{{maskImage|option('nan')}}</span> <span class="pre">{{addImage|option('add')}}</span> <span class="pre">{{subtractImage|option('sub')}}</span> <span class="pre">{{multiplyImage|option('mul')}}</span> <span class="pre">{{divideImage|option('div')}}</span></tt></p>
 </td>
 </tr>
 <tr class="field"><th class="field-name">Inputs:</th><td class="field-body"><ul class="first">
-<li><p class="first"><strong>inputImageName</strong> : Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG/</p>
+<li><p class="first"><strong>inputImageName</strong> : PNG/</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">default:</th><td class="field-body">required</td>
+<tr class="field"><th class="field-name">default:</th><td class="field-body"></td>
 </tr>
-<tr class="field"><th class="field-name">target:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">target:</th><td class="field-body"></td>
 </tr>
 <tr class="field"><th class="field-name">index:</th><td class="field-body">None</td>
 </tr>
 <tr class="field"><th class="field-name">channel:</th><td class="field-body">input</td>
 </tr>
-<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">--in</td>
+<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">{{inputImageName|option('in')}}</td>
 </tr>
 </tbody>
 </table>
@@ -390,20 +386,20 @@ ul.auto-toc {
 <p>Input image</p>
 <p>Input image filename</p>
 </li>
-<li><p class="first"><strong>rmsImages</strong> : Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG/</p>
+<li><p class="first"><strong>rmsImages</strong> : PNG/</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">default:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">default:</th><td class="field-body"></td>
 </tr>
-<tr class="field"><th class="field-name">target:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">target:</th><td class="field-body"></td>
 </tr>
 <tr class="field"><th class="field-name">index:</th><td class="field-body">None</td>
 </tr>
 <tr class="field"><th class="field-name">channel:</th><td class="field-body">input</td>
 </tr>
-<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">--rms</td>
+<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">{{rmsImages|option('rms')}}</td>
 </tr>
 </tbody>
 </table>
@@ -414,20 +410,20 @@ ul.auto-toc {
 <p>Compute RMS</p>
 <p>Compute the mean rms between this image and the input image</p>
 </li>
-<li><p class="first"><strong>maskImage</strong> : Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG/</p>
+<li><p class="first"><strong>maskImage</strong> : PNG/</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">default:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">default:</th><td class="field-body"></td>
 </tr>
-<tr class="field"><th class="field-name">target:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">target:</th><td class="field-body"></td>
 </tr>
 <tr class="field"><th class="field-name">index:</th><td class="field-body">None</td>
 </tr>
 <tr class="field"><th class="field-name">channel:</th><td class="field-body">input</td>
 </tr>
-<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">--nan</td>
+<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">{{maskImage|option('nan')}}</td>
 </tr>
 </tbody>
 </table>
@@ -438,20 +434,20 @@ ul.auto-toc {
 <p>Mask Image</p>
 <p>This image is used to mask the input image. Voxels outside of the mask are set to nan</p>
 </li>
-<li><p class="first"><strong>addImage</strong> : Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG/</p>
+<li><p class="first"><strong>addImage</strong> : PNG/</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">default:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">default:</th><td class="field-body"></td>
 </tr>
-<tr class="field"><th class="field-name">target:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">target:</th><td class="field-body"></td>
 </tr>
 <tr class="field"><th class="field-name">index:</th><td class="field-body">None</td>
 </tr>
 <tr class="field"><th class="field-name">channel:</th><td class="field-body">input</td>
 </tr>
-<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">--add</td>
+<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">{{addImage|option('add')}}</td>
 </tr>
 </tbody>
 </table>
@@ -462,20 +458,20 @@ ul.auto-toc {
 <p>Add Images</p>
 <p>This image is added to the input image</p>
 </li>
-<li><p class="first"><strong>subtractImage</strong> : Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG/</p>
+<li><p class="first"><strong>subtractImage</strong> : PNG/</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">default:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">default:</th><td class="field-body"></td>
 </tr>
-<tr class="field"><th class="field-name">target:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">target:</th><td class="field-body"></td>
 </tr>
 <tr class="field"><th class="field-name">index:</th><td class="field-body">None</td>
 </tr>
 <tr class="field"><th class="field-name">channel:</th><td class="field-body">input</td>
 </tr>
-<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">--sub</td>
+<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">{{subtractImage|option('sub')}}</td>
 </tr>
 </tbody>
 </table>
@@ -486,20 +482,20 @@ ul.auto-toc {
 <p>Subtract Images</p>
 <p>This image is subtracted from the input image</p>
 </li>
-<li><p class="first"><strong>multiplyImage</strong> : Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG/</p>
+<li><p class="first"><strong>multiplyImage</strong> : PNG/</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">default:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">default:</th><td class="field-body"></td>
 </tr>
-<tr class="field"><th class="field-name">target:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">target:</th><td class="field-body"></td>
 </tr>
 <tr class="field"><th class="field-name">index:</th><td class="field-body">None</td>
 </tr>
 <tr class="field"><th class="field-name">channel:</th><td class="field-body">input</td>
 </tr>
-<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">--mul</td>
+<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">{{multiplyImage|option('mul')}}</td>
 </tr>
 </tbody>
 </table>
@@ -510,20 +506,20 @@ ul.auto-toc {
 <p>Multiply Images</p>
 <p>This image is multiplied with input image</p>
 </li>
-<li><p class="first"><strong>divideImage</strong> : Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG/</p>
+<li><p class="first"><strong>divideImage</strong> : PNG/</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">default:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">default:</th><td class="field-body"></td>
 </tr>
-<tr class="field"><th class="field-name">target:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">target:</th><td class="field-body"></td>
 </tr>
 <tr class="field"><th class="field-name">index:</th><td class="field-body">None</td>
 </tr>
 <tr class="field"><th class="field-name">channel:</th><td class="field-body">input</td>
 </tr>
-<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">--div</td>
+<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">{{divideImage|option('div')}}</td>
 </tr>
 </tbody>
 </table>
@@ -545,15 +541,15 @@ ul.auto-toc {
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">default:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">default:</th><td class="field-body"></td>
 </tr>
-<tr class="field"><th class="field-name">target:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">target:</th><td class="field-body"></td>
 </tr>
 <tr class="field"><th class="field-name">index:</th><td class="field-body">None</td>
 </tr>
 <tr class="field"><th class="field-name">channel:</th><td class="field-body">None</td>
 </tr>
-<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">--float</td>
+<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">{{convertToFloat|flag('float')}}</td>
 </tr>
 </tbody>
 </table>
@@ -569,15 +565,15 @@ ul.auto-toc {
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">default:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">default:</th><td class="field-body"></td>
 </tr>
-<tr class="field"><th class="field-name">target:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">target:</th><td class="field-body"></td>
 </tr>
 <tr class="field"><th class="field-name">index:</th><td class="field-body">None</td>
 </tr>
 <tr class="field"><th class="field-name">channel:</th><td class="field-body">None</td>
 </tr>
-<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">--down</td>
+<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">{{downSample|flag('down')}}</td>
 </tr>
 </tbody>
 </table>
@@ -593,15 +589,15 @@ ul.auto-toc {
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">default:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">default:</th><td class="field-body"></td>
 </tr>
-<tr class="field"><th class="field-name">target:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">target:</th><td class="field-body"></td>
 </tr>
 <tr class="field"><th class="field-name">index:</th><td class="field-body">None</td>
 </tr>
 <tr class="field"><th class="field-name">channel:</th><td class="field-body">None</td>
 </tr>
-<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">--bin</td>
+<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">{{binarize|flag('bin')}}</td>
 </tr>
 </tbody>
 </table>
@@ -617,15 +613,15 @@ ul.auto-toc {
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">default:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">default:</th><td class="field-body"></td>
 </tr>
-<tr class="field"><th class="field-name">target:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">target:</th><td class="field-body"></td>
 </tr>
 <tr class="field"><th class="field-name">index:</th><td class="field-body">None</td>
 </tr>
 <tr class="field"><th class="field-name">channel:</th><td class="field-body">None</td>
 </tr>
-<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">--iso</td>
+<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">{{isotropic|flag('iso')}}</td>
 </tr>
 </tbody>
 </table>
@@ -641,15 +637,15 @@ ul.auto-toc {
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">default:</th><td class="field-body">none</td>
+<tr class="field"><th class="field-name">default:</th><td class="field-body"></td>
 </tr>
-<tr class="field"><th class="field-name">target:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">target:</th><td class="field-body"></td>
 </tr>
 <tr class="field"><th class="field-name">index:</th><td class="field-body">None</td>
 </tr>
 <tr class="field"><th class="field-name">channel:</th><td class="field-body">None</td>
 </tr>
-<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">--add</td>
+<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">{{addConst|option('add')}}</td>
 </tr>
 </tbody>
 </table>
@@ -666,15 +662,15 @@ ul.auto-toc {
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">default:</th><td class="field-body">none</td>
+<tr class="field"><th class="field-name">default:</th><td class="field-body"></td>
 </tr>
-<tr class="field"><th class="field-name">target:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">target:</th><td class="field-body"></td>
 </tr>
 <tr class="field"><th class="field-name">index:</th><td class="field-body">None</td>
 </tr>
 <tr class="field"><th class="field-name">channel:</th><td class="field-body">None</td>
 </tr>
-<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">--sub</td>
+<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">{{subConst|option('sub')}}</td>
 </tr>
 </tbody>
 </table>
@@ -691,15 +687,15 @@ ul.auto-toc {
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">default:</th><td class="field-body">none</td>
+<tr class="field"><th class="field-name">default:</th><td class="field-body"></td>
 </tr>
-<tr class="field"><th class="field-name">target:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">target:</th><td class="field-body"></td>
 </tr>
 <tr class="field"><th class="field-name">index:</th><td class="field-body">None</td>
 </tr>
 <tr class="field"><th class="field-name">channel:</th><td class="field-body">None</td>
 </tr>
-<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">--mul</td>
+<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">{{mulConst|option('mul')}}</td>
 </tr>
 </tbody>
 </table>
@@ -716,15 +712,15 @@ ul.auto-toc {
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">default:</th><td class="field-body">none</td>
+<tr class="field"><th class="field-name">default:</th><td class="field-body"></td>
 </tr>
-<tr class="field"><th class="field-name">target:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">target:</th><td class="field-body"></td>
 </tr>
 <tr class="field"><th class="field-name">index:</th><td class="field-body">None</td>
 </tr>
 <tr class="field"><th class="field-name">channel:</th><td class="field-body">None</td>
 </tr>
-<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">--div</td>
+<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">{{divConst|option('div')}}</td>
 </tr>
 </tbody>
 </table>
@@ -741,15 +737,15 @@ ul.auto-toc {
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">default:</th><td class="field-body">none</td>
+<tr class="field"><th class="field-name">default:</th><td class="field-body"></td>
 </tr>
-<tr class="field"><th class="field-name">target:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">target:</th><td class="field-body"></td>
 </tr>
 <tr class="field"><th class="field-name">index:</th><td class="field-body">None</td>
 </tr>
 <tr class="field"><th class="field-name">channel:</th><td class="field-body">None</td>
 </tr>
-<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">--smo</td>
+<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">{{smooth|option('smo')}}</td>
 </tr>
 </tbody>
 </table>
@@ -761,20 +757,20 @@ ul.auto-toc {
 <p>The input image is smoothed using a cubic b-spline kernel
 :Possible Values: []</p>
 </li>
-<li><p class="first"><strong>smooth</strong> : float.vector/</p>
+<li><p class="first"><strong>smooth</strong> : vector.float/</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">default:</th><td class="field-body">none</td>
+<tr class="field"><th class="field-name">default:</th><td class="field-body"></td>
 </tr>
-<tr class="field"><th class="field-name">target:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">target:</th><td class="field-body"></td>
 </tr>
 <tr class="field"><th class="field-name">index:</th><td class="field-body">None</td>
 </tr>
 <tr class="field"><th class="field-name">channel:</th><td class="field-body">None</td>
 </tr>
-<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">--smoG</td>
+<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">{{smooth|option('smoG')}}</td>
 </tr>
 </tbody>
 </table>
@@ -790,15 +786,15 @@ ul.auto-toc {
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">default:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">default:</th><td class="field-body"></td>
 </tr>
-<tr class="field"><th class="field-name">target:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">target:</th><td class="field-body"></td>
 </tr>
 <tr class="field"><th class="field-name">index:</th><td class="field-body">None</td>
 </tr>
 <tr class="field"><th class="field-name">channel:</th><td class="field-body">None</td>
 </tr>
-<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">--thr</td>
+<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">{{threshold|option('thr')}}</td>
 </tr>
 </tbody>
 </table>

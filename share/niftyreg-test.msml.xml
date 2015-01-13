@@ -1,0 +1,16 @@
+<msml>
+    <variables>
+        <var name="ref1" value="niftreg_test1_reference.png" physical="PNG"/>
+        <var name="tar1" value="niftreg_test1_target.png" physical="PNG"/>
+
+    </variables>
+    <scene/>
+    <workflow>
+        <reg_f3d
+                referenceImageName="${ref1}"
+                floatingImageName="${tar1}"
+                toutputCPPFileName="outputCPP.nii"
+                toutputWarpedImageName="outputCPP.png"
+                />
+    </workflow>
+</msml>

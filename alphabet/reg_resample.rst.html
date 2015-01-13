@@ -358,28 +358,24 @@ ul.auto-toc {
 <tr class="field"><th class="field-name">type:</th><td class="field-body"><p class="first"><strong>ShellOperator</strong></p>
 </td>
 </tr>
-<tr class="field"><th class="field-name">template:</th><td class="field-body"><p class="first"><a href="#id1"><span class="problematic" id="id2">``</span></a>reg_resample --inter={interpolation} --pad={paddingValue}  --res={warpedImage} --blank={warpedGrid}  --ref={referenceImageName} --flo={floatingImageName} --trans={inputTransformation} ``</p>
-<div class="system-message" id="id1">
-<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">reg_resample.rst</tt>, line 21); <em><a href="#id2">backlink</a></em></p>
-<p>Inline literal start-string without end-string.</p>
-</div>
+<tr class="field"><th class="field-name">template:</th><td class="field-body"><p class="first"><tt class="docutils literal">reg_resample <span class="pre">{{twarpedGrid|option('blank')}}</span> <span class="pre">{{twarpedImage|option('res')}}</span> <span class="pre">{{interpolation|option('inter')}}</span> <span class="pre">{{paddingValue|option('pad')}}</span>&nbsp; <span class="pre">{{referenceImageName|option('ref')}}</span> <span class="pre">{{floatingImageName|option('flo')}}</span> <span class="pre">{{inputTransformation|option('trans')}}</span></tt></p>
 </td>
 </tr>
 <tr class="field"><th class="field-name">Inputs:</th><td class="field-body"><ul class="first">
-<li><p class="first"><strong>referenceImageName</strong> : Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG/</p>
+<li><p class="first"><strong>referenceImageName</strong> : PNG/</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">default:</th><td class="field-body">required</td>
+<tr class="field"><th class="field-name">default:</th><td class="field-body"></td>
 </tr>
-<tr class="field"><th class="field-name">target:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">target:</th><td class="field-body"></td>
 </tr>
 <tr class="field"><th class="field-name">index:</th><td class="field-body">None</td>
 </tr>
 <tr class="field"><th class="field-name">channel:</th><td class="field-body">input</td>
 </tr>
-<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">--ref</td>
+<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">{{referenceImageName|option('ref')}}</td>
 </tr>
 </tbody>
 </table>
@@ -390,20 +386,20 @@ ul.auto-toc {
 <p>Reference image</p>
 <p>Reference image filename (also called Target of Fixed)</p>
 </li>
-<li><p class="first"><strong>floatingImageName</strong> : Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG/</p>
+<li><p class="first"><strong>floatingImageName</strong> : PNG/</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">default:</th><td class="field-body">required</td>
+<tr class="field"><th class="field-name">default:</th><td class="field-body"></td>
 </tr>
-<tr class="field"><th class="field-name">target:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">target:</th><td class="field-body"></td>
 </tr>
 <tr class="field"><th class="field-name">index:</th><td class="field-body">None</td>
 </tr>
 <tr class="field"><th class="field-name">channel:</th><td class="field-body">input</td>
 </tr>
-<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">--flo</td>
+<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">{{floatingImageName|option('flo')}}</td>
 </tr>
 </tbody>
 </table>
@@ -414,20 +410,20 @@ ul.auto-toc {
 <p>Floating image</p>
 <p>Floating image filename (also called Source of moving)</p>
 </li>
-<li><p class="first"><strong>inputTransformation</strong> : ['TXT', 'MAT', 'NII', 'NII.GZ', 'NRRD']/</p>
+<li><p class="first"><strong>inputTransformation</strong> : TXT/</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">default:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">default:</th><td class="field-body"></td>
 </tr>
-<tr class="field"><th class="field-name">target:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">target:</th><td class="field-body"></td>
 </tr>
 <tr class="field"><th class="field-name">index:</th><td class="field-body">None</td>
 </tr>
 <tr class="field"><th class="field-name">channel:</th><td class="field-body">input</td>
 </tr>
-<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">--trans</td>
+<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">{{inputTransformation|option('trans')}}</td>
 </tr>
 </tbody>
 </table>
@@ -442,20 +438,20 @@ ul.auto-toc {
 </td>
 </tr>
 <tr class="field"><th class="field-name">Output:</th><td class="field-body"><ul class="first">
-<li><p class="first"><strong>warpedImage</strong> : Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG/</p>
+<li><p class="first"><strong>warpedImage</strong> : PNG/</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">default:</th><td class="field-body">warpedImage.nii</td>
+<tr class="field"><th class="field-name">default:</th><td class="field-body"></td>
 </tr>
-<tr class="field"><th class="field-name">target:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">target:</th><td class="field-body"></td>
 </tr>
 <tr class="field"><th class="field-name">index:</th><td class="field-body">None</td>
 </tr>
 <tr class="field"><th class="field-name">channel:</th><td class="field-body">output</td>
 </tr>
-<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">--res</td>
+<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">{{warpedImage|option('res')}}</td>
 </tr>
 </tbody>
 </table>
@@ -466,20 +462,20 @@ ul.auto-toc {
 <p>Warped image</p>
 <p>Warped floating image</p>
 </li>
-<li><p class="first"><strong>warpedGrid</strong> : Image.NII,Image.NII.GZ,Image.NRRD,Image.PNG/</p>
+<li><p class="first"><strong>warpedGrid</strong> : PNG/</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">default:</th><td class="field-body">warpedGrid.nii</td>
+<tr class="field"><th class="field-name">default:</th><td class="field-body"></td>
 </tr>
-<tr class="field"><th class="field-name">target:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">target:</th><td class="field-body"></td>
 </tr>
 <tr class="field"><th class="field-name">index:</th><td class="field-body">None</td>
 </tr>
 <tr class="field"><th class="field-name">channel:</th><td class="field-body">output</td>
 </tr>
-<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">--blank</td>
+<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">{{warpedGrid|option('blank')}}</td>
 </tr>
 </tbody>
 </table>
@@ -494,25 +490,73 @@ ul.auto-toc {
 </td>
 </tr>
 <tr class="field"><th class="field-name">Parameter:</th><td class="field-body"><ul class="first last">
-<li><p class="first"><strong>interpolation</strong> : vector.int/</p>
+<li><p class="first"><strong>twarpedGrid</strong> : str/</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">default:</th><td class="field-body">3</td>
+<tr class="field"><th class="field-name">default:</th><td class="field-body"></td>
 </tr>
-<tr class="field"><th class="field-name">target:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">target:</th><td class="field-body">True</td>
 </tr>
-<tr class="field"><th class="field-name">index:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">index:</th><td class="field-body"></td>
 </tr>
-<tr class="field"><th class="field-name">channel:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">channel:</th><td class="field-body">output</td>
 </tr>
-<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">--inter</td>
+<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">{{twarpedGrid|option('blank')}}</td>
 </tr>
 </tbody>
 </table>
 <div class="system-message">
 <p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">reg_resample.rst</tt>, line 101)</p>
+<p>Field list ends without a blank line; unexpected unindent.</p>
+</div>
+<p>Grid image</p>
+<p>Warped blank grid image</p>
+</li>
+<li><p class="first"><strong>twarpedImage</strong> : str/</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">default:</th><td class="field-body"></td>
+</tr>
+<tr class="field"><th class="field-name">target:</th><td class="field-body">True</td>
+</tr>
+<tr class="field"><th class="field-name">index:</th><td class="field-body"></td>
+</tr>
+<tr class="field"><th class="field-name">channel:</th><td class="field-body">output</td>
+</tr>
+<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">{{twarpedImage|option('res')}}</td>
+</tr>
+</tbody>
+</table>
+<div class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">reg_resample.rst</tt>, line 113)</p>
+<p>Field list ends without a blank line; unexpected unindent.</p>
+</div>
+<p>Warped image</p>
+<p>Warped floating image</p>
+</li>
+<li><p class="first"><strong>interpolation</strong> : vector.int/</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">default:</th><td class="field-body"></td>
+</tr>
+<tr class="field"><th class="field-name">target:</th><td class="field-body"></td>
+</tr>
+<tr class="field"><th class="field-name">index:</th><td class="field-body">None</td>
+</tr>
+<tr class="field"><th class="field-name">channel:</th><td class="field-body">None</td>
+</tr>
+<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">{{interpolation|option('inter')}}</td>
+</tr>
+</tbody>
+</table>
+<div class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">reg_resample.rst</tt>, line 125)</p>
 <p>Field list ends without a blank line; unexpected unindent.</p>
 </div>
 <p>Interpolation order</p>
@@ -524,20 +568,20 @@ ul.auto-toc {
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">default:</th><td class="field-body">0</td>
+<tr class="field"><th class="field-name">default:</th><td class="field-body"></td>
 </tr>
-<tr class="field"><th class="field-name">target:</th><td class="field-body">None</td>
+<tr class="field"><th class="field-name">target:</th><td class="field-body"></td>
 </tr>
 <tr class="field"><th class="field-name">index:</th><td class="field-body">None</td>
 </tr>
 <tr class="field"><th class="field-name">channel:</th><td class="field-body">None</td>
 </tr>
-<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">--pad</td>
+<tr class="field"><th class="field-name">cli_flag:</th><td class="field-body">{{paddingValue|option('pad')}}</td>
 </tr>
 </tbody>
 </table>
 <div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">reg_resample.rst</tt>, line 114)</p>
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">reg_resample.rst</tt>, line 138)</p>
 <p>Field list ends without a blank line; unexpected unindent.</p>
 </div>
 <p>Padding value</p>

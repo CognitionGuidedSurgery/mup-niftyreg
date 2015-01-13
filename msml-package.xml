@@ -1,0 +1,15 @@
+<package xmlns="http://msml.org/package/1.0/"
+         name="mup-cli"
+         version="2015.01.03"
+        >
+    <information>
+        <maintainer name="Alexander Weigl"
+                    email="alexander.weigl@student.kit.edu"/>
+        <documentation file="README.md"></documentation>
+        <homepage url="http://github.com/CognitionGuidedSurgery/mup-nifty"/>
+        <repository url="http://github.com/CognitionGuidedSurgery/mup-nifty.git" type="git" />
+    </information>
+
+    <alphabet-dir>alphabet</alphabet-dir>
+    <binary-dir>build/reg-apps/</binary-dir>
+</package>

@@ -24,3 +24,10 @@ gen:
 
 html:
 	cd alphabet && (for i in *.rst; do rst2html $i $i.html;  done)
+
+
+.PHONY: testmsml
+testmsml:
+	PYTHONPATH=/home/weigl/workspace/msml/src/ \
+	    /home/weigl/.virtualenvs/msml/bin/python \
+    	    /home/weigl/workspace/msml/src/msml.py -vvv exec --package . -e base -- share/niftyreg-test.msml.xml
