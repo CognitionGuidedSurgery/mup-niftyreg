@@ -10,6 +10,7 @@
         <repository url="http://github.com/CognitionGuidedSurgery/mup-nifty.git" type="git" />
     </information>
 
+    <rc-file>sorts.py</rc-file>
     <alphabet-dir>alphabet</alphabet-dir>
     <binary-dir>build/reg-apps/</binary-dir>
 </package>

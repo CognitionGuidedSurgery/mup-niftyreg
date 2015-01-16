@@ -1,7 +1,7 @@
 <msml>
     <variables>
-        <var name="ref1" value="niftreg_test1_reference.png" physical="PNG"/>
-        <var name="tar1" value="niftreg_test1_target.png" physical="PNG"/>
+        <var name="ref1" value="refImg2D.nii.gz" physical="NII"/>
+        <var name="tar1" value="floImg2D.nii.gz" physical="NII"/>
 
     </variables>
     <scene/>
