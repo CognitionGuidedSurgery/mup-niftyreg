@@ -1,5 +1,5 @@
 <package xmlns="http://msml.org/package/1.0/"
-         name="mup-cli"
+         name="mup-nifty"
          version="2015.01.03"
         >
     <information>
